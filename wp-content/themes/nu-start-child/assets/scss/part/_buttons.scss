@@ -1,0 +1,92 @@
+#main {
+
+  .wp-block-button {
+    text-transform: uppercase;
+
+    &__link {
+      text-transform: uppercase;
+      padding: 15px 25px;
+      border-radius: 2px;
+      letter-spacing: 0.1em;
+      font-size: 13px;
+    }
+    
+    //  wp-block-button--white-border
+    &--white-border .wp-block-button__link {
+      border: 1px solid #fff;
+    }
+
+    // .wp-block-button--sq-icon
+    &--sq-icon {
+      min-width: unset!important;
+      
+      .wp-block-button__link {
+        position: relative;
+        display: flex;
+        width: 52px;
+        height: 52px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        border-radius: 3px;
+        background-color: #a6192e!important;
+        transition: 250ms;
+        font-size: 0;
+
+        &:hover {
+          background-color: #76232f!important;
+          border-color: #76232f!important;
+        }
+
+        &::after, &::before {
+          content: '';
+          position: absolute;
+
+        }
+
+        &::after {
+          width: 8px;
+          height: 8px;
+          border-top: 1px solid #fff;
+          border-right: 1px solid #fff;
+          transform: rotate(45deg);
+          top: 19px;
+          left: 24px;
+        }
+
+        &::before {
+          width: 17px;
+          height: 1px;
+          background-color: #fff;
+          top: 22px;
+          left: 15px;
+        }
+
+        svg[class*="fa"] {
+          margin: 0;
+        }
+      }
+
+      &.no-radius .wp-block-button__link {
+        border-radius: 0;
+      }
+    }
+  }
+  
+  .has-black-background-color .wp-block-media-text.text-bg--grey .wp-block-buttons>.wp-block-button.is-style-outline:not(.wp-block-button--sq-icon)>.wp-block-button__link {
+    color: currentColor;
+    &:hover {
+      border-color: var(--wp--preset--color--black);
+      background-color: var(--wp--preset--color--black)!important;
+      color: var(--wp--preset--color--white)!important;
+    }
+  }
+}
+
+body #main .wp-block-button__link {
+  @media screen and (max-width: 1280px) {
+    transition: all 0s 0s!important;  
+  }
+}

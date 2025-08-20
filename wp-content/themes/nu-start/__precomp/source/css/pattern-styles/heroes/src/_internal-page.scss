@@ -1,0 +1,69 @@
+.pattern--heroes-internal-page {
+	//
+	> .wp-block-cover {
+		border-bottom: 1px solid var(--wp--preset--color--light);
+		border-bottom: 1px solid var(--wp--preset--color--neutral-3);
+		overflow: hidden;
+	}
+
+	//
+	> .wp-block-group {
+		margin-top: 0 !important;
+		padding-right: var(--wp--custom--spacing--outer);
+		padding-left: var(--wp--custom--spacing--outer);
+	}
+
+	//
+	.nu__breadcrumbs {
+		padding: $base-margin 0;
+	}
+	.wp-block-cover__inner-container {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+		overflow: hidden;
+		> .has-background {
+			padding: ($half-margin + $base-margin) 0;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			margin-bottom: 0;
+			padding-left: var(--wp--custom--spacing--outer);
+			padding-right: var(--wp--custom--spacing--outer);
+			overflow: hidden;
+			animation: fade-in-up 2s both $bezier;
+			animation-delay: 200ms;
+			// * {
+			// }
+		}
+	}
+	+ .alignfull.has-background {
+		margin-top: 0;
+		padding-top: $margin_4x;
+		padding-bottom: $margin_4x;
+		//
+		a.wp-block-button__link {
+			&:hover {
+				background-color: var(--wp--preset--color--white) !important;
+				color: var(--wp--preset--color--black) !important;
+			}
+		}
+	}
+
+	// * From Oakland child theme (Kyle)
+	// paint the bg color up behind the breadcrumbs
+	+ .wp-block-group.alignfull.has-background {
+		position: relative;
+		&:before {
+			content: "";
+			background-color: inherit;
+			position: absolute;
+			z-index: -1;
+			top: 0;
+			left: 0;
+			transform: translateY(-100%);
+			width: 100%;
+			height: 50px;
+		}
+	}
+}

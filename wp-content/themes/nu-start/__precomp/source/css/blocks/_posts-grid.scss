@@ -1,0 +1,324 @@
+//
+//
+//
+
+// ? scope and begin styling...
+.posts-grid {
+	margin-top: $margin_2x;
+	margin-bottom: $base-margin;
+
+	// ? set to specific brand value for now
+	.post-title {
+		margin: $base-margin 0 $half-margin 0;
+		font-weight: 700;
+		font-size: var(--wp--preset--font-size--20-28);
+		@include rfs(28px, line-height);
+	}
+
+	.page-category {
+		font-weight: 400;
+		width: 100%;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		font-size: var(--wp--preset--font-size--12-16);
+		line-height: 16px;
+		margin-bottom: $base-margin;
+	}
+
+	.call-to-action-text {
+		@include nu_fa_icon("\f061", after);
+		display: block;
+		position: absolute;
+		bottom: $base-margin;
+		left: $base-margin;
+		bottom: $margin_2x;
+		left: $margin_2x;
+		font-size: var(--wp--preset--font-size--14-20);
+		line-height: 20px;
+		opacity: 0.8;
+		@extend %transition;
+		text-decoration: solid 1px underline;
+		text-decoration-color: var(--wp--preset--color--nu-red);
+		&:after {
+			display: inline-block;
+			text-decoration: none;
+			color: var(--wp--preset--color--nu-red);
+			font-size: 16px;
+			line-height: 16px;
+			margin: 0 0 0 $half-margin;
+		}
+		~ .post-excerpt {
+			margin-bottom: $margin_3x;
+		}
+	}
+
+	// ? handle adjusting base styles of contained elements
+	a.contains-clickable-area:after,
+	img {
+		object-fit: cover;
+		@extend %transition;
+	}
+
+	ul {
+		list-style: none;
+		list-style-type: none;
+		padding: 0;
+	}
+
+	.is-hanging-icon {
+		// display: none;
+		padding: 4px;
+	}
+
+	a.contains-clickable-area {
+		width: 100%;
+		height: 100%;
+		@include nu__boxshadow(0);
+		display: flex;
+		flex-flow: column nowrap;
+		text-decoration: none;
+		color: currentColor;
+		border: none;
+		&:hover,
+		&:focus {
+			border: none;
+			img {
+				transform: scale(1.2);
+			}
+			@include nu__boxshadow(5);
+			.call-to-action-text {
+				text-decoration: none;
+			}
+		}
+	}
+
+	// ?
+	.nu__grid {
+		padding-top: $margin_2x;
+		padding-bottom: $margin_2x;
+		@include nu__responsive_grid_layout();
+		> ul {
+			margin-block-start: 0px;
+			margin-block-end: 0px;
+			padding-inline-start: 0px;
+			padding-inline-end: 0px;
+			list-style-type: none;
+			list-style: none;
+		}
+
+		&.cols-1 {
+			ul {
+				@include media("<small") {
+					gap: 100px;
+				}
+			}
+		}
+	}
+
+	//
+	.grid-item {
+		position: relative;
+		@include nu__grid_item_cover_ratios();
+		@include nu__grid_item_orientation();
+
+		.grid-item-content {
+			position: relative;
+			flex-grow: 1;
+			background-color: var(
+				--wp--custom--elems--teasers--base--background
+			);
+
+			padding: $base-margin;
+			padding: $margin_2x;
+		}
+		&.has-layout-vertical {
+			figure {
+				min-height: 240px;
+			}
+		}
+
+		// is-horizontal modifier
+		&.has-layout-horizontal {
+			.post-excerpt,
+			.post-title {
+				max-width: 680px;
+			}
+			> .contains-clickable-area {
+				display: flex;
+				flex-flow: row nowrap;
+				figure {
+					flex: 0 0 auto;
+					min-width: min(45%, 320px);
+				}
+			}
+			// * New non-clickable person teaser (e.g. social ambassadors)
+			> .person-teaser {
+				display: flex;
+				@include media(">=small") {
+					flex-flow: row nowrap;
+				}
+				@include media("<small") {
+					flex-flow: column;
+				}
+				figure {
+					flex: 0 0 auto;
+					@include media(">=medium") {
+						min-width: 376px;
+					}
+					@include media("<medium") {
+						min-width: 310px;
+					}
+				}
+			}
+
+			//
+			// ? this needs more. margins are messed up now. move this to bottom.
+			//
+			//
+			&.has-image-align-alternate {
+				&:nth-child(even) {
+					@include media(">medium") {
+						figure {
+							order: 1;
+						}
+						.grid-item-content {
+							order: 0;
+						}
+					}
+				}
+			}
+			&.has-image-align-right {
+				@include media(">medium") {
+					figure {
+						order: 1;
+					}
+					.grid-item-content {
+						order: 0;
+					}
+				}
+			}
+
+			@include media("<=medium") {
+				> .contains-clickable-area,
+				& {
+					flex-flow: column nowrap;
+
+					> figure {
+						width: 100%;
+						flex: 1 0 auto;
+						max-width: 100%;
+						@include aspect_ratio(16, 9);
+					}
+					> .grid-item-content {
+						width: 100%;
+						margin: 0 !important;
+					}
+				}
+			}
+		}
+	}
+}
+
+// ? this is the block editor equivalent of body.wp-admin
+// ? styles for just the editor go here for now; rather than in another set of files
+.is-root-container.block-editor-block-list__layout {
+	// disable posts grid items that are clickable areas from working in the CMS
+	.nu__grid {
+		.grid-item {
+			.contains-clickable-area {
+				pointer-events: none;
+			}
+			a {
+				pointer-events: none;
+			}
+		}
+	}
+}
+
+//
+//
+//
+@import "./posts-grid/filters/filtering";
+@import "./posts-grid/ext/filtering-block";
+@import "./posts-grid/ext/pagination-block";
+
+@import "./posts-grid/teasers/events-teaser";
+@import "./posts-grid/teasers/person-teaser";
+@import "./posts-grid/teasers/news-teaser";
+@import "./posts-grid/teasers/page-teaser";
+@import "./posts-grid/teasers/projects-teaser";
+@import "./posts-grid/teasers/program-teaser";
+@import "./posts-grid/teasers/profile-teaser";
+
+li.grid-item.broken {
+	&:only-child {
+		flex: 1 0 100% !important;
+		width: 100% !important;
+		grid-column: 1/5;
+		p {
+			text-align: center;
+			padding: $base-margin;
+			font-style: italic;
+		}
+	}
+}
+
+//
+//
+//
+// ? REVIEW FROM CHARLOTTE COPIED IN - STILL NEEDS REVIEW
+
+.acf-block.posts-grid .nu__grid .grid-item.page {
+	.grid-item-content {
+		.page-category {
+			color: var(--wp--preset--color--neutral-4);
+		}
+		.post-title {
+			font-size: var(--wp--preset--font-size--30-36);
+			font-weight: 300;
+			@include rfs(32px, line-height);
+
+			span {
+				border-bottom: 0;
+			}
+		}
+		.post-excerpt {
+			color: var(--wp--preset--color--neutral-5);
+		}
+	}
+
+	// * Target horizontal posts grid
+	&.has-layout-horizontal {
+		.grid-item-content {
+			// * Set horizontal posts grid titles to font-size 20px and font-weight 700 (per Denise)
+			.post-title {
+				font-size: var(--wp--preset--font-size--30-36);
+				font-weight: 300;
+				@include rfs(30px, line-height);
+			}
+		}
+	}
+
+	// * Target vertical posts grid
+	&.has-layout-vertical {
+		.grid-item-content {
+			// * Set vertical posts grid titles to font-size 30px and font-weight 300 (per Denise)
+			.post-title {
+				font-size: var(--wp--preset--font-size--20-28);
+				font-weight: 700;
+				@include rfs(20px, line-height);
+			}
+		}
+	}
+}
+
+// * Hotfix for post grid items on Oakland
+.nu__grid {
+	.post-title span {
+		color: var(--wp--preset--color--black);
+	}
+	.post-excerpt {
+		font-size: 16px;
+		line-height: 24px;
+	}
+}

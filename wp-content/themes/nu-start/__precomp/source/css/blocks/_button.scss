@@ -1,0 +1,154 @@
+//
+//
+//
+// * CLEAN START: BUTTONS
+.wp-block-buttons {
+	margin: $base-margin 0;
+	gap: $base-margin;
+	//
+	//
+	> .wp-block-button {
+		min-width: $margin_4x;
+		//
+		//
+		// * Default for outline-style button
+		&.is-style-outline {
+			> .wp-block-button__link {
+				// ? must hot be customized
+				&:not(.has-text-color):not(.has-background) {
+					&:hover {
+						border-color: var(--wp--preset--color--black);
+						background-color: var(--wp--preset--color--black);
+						color: var(--wp--preset--color--white);
+					}
+				}
+			}
+		}
+		//
+		//
+		// * Default for solid-style button
+		&:not(.is-style-outline) {
+			//
+			> .wp-block-button__link {
+				border: 1px solid transparent;
+				// ? must hot be customized
+				&:not(.has-text-color):not(.has-background) {
+					background-color: var(--wp--preset--color--black);
+					&:hover {
+						background-color: var(--wp--preset--color--white);
+						color: var(--wp--preset--color--black);
+						border: 1px solid var(--wp--preset--color--black);
+					}
+				}
+			}
+		}
+		//
+		//
+		> .wp-block-button__link {
+			> .svg-inline--fa {
+				// * Make color same as the text before it
+				color: inherit;
+			}
+		}
+	}
+}
+
+$palette: (
+	"black",
+	"white",
+	"dark",
+	"light",
+	"primary",
+	"secondary",
+	"nu-red",
+	"neutral-1",
+	"neutral-2",
+	"neutral-3",
+	"neutral-4",
+	"neutral-5",
+	"neutral-6"
+);
+
+@each $color in $palette {
+	// ? for outline buttons only
+	.wp-block-button.is-style-outline {
+		.wp-block-button__link {
+			// ? loop selecting each color
+			&.has-#{$color}-color {
+				border-color: var(--wp--preset--color--#{$color}) !important;
+				&:hover {
+					color: var(--wp--preset--color--white) !important;
+					background-color: var(
+						--wp--preset--color--#{$color}
+					) !important;
+					border-color: var(
+						--wp--preset--color--#{$color}
+					) !important;
+				}
+				&.has-white-color {
+					&:hover {
+						color: var(--wp--preset--color--black) !important;
+					}
+				}
+			}
+		}
+	}
+
+	// ? for solid buttons (for now default; not is outline)
+	.wp-block-button:not(.is-style-outline) {
+		.wp-block-button__link {
+			// ? loop selecting each background color
+			&.has-background.has-#{$color}-background-color {
+				border-color: var(--wp--preset--color--#{$color}) !important;
+				&:hover {
+					border: 1px
+						solid
+						var(--wp--preset--color--#{$color}) !important;
+					background-color: var(
+						--wp--preset--color--white
+					) !important;
+					color: var(--wp--preset--color--#{$color}) !important;
+				}
+			}
+		}
+	}
+}
+
+//
+//
+//
+// * For buttons inside a group with black background color (it's not all encompassing, but it's better than nothing)
+.has-black-background-color {
+	.wp-block-buttons {
+		> .wp-block-button {
+			&:not(.is-style-outline) {
+				> .wp-block-button__link {
+					color: var(--wp--preset--color--black) !important;
+					background-color: var(
+						--wp--preset--color--white
+					) !important;
+					&:hover {
+						color: var(--wp--preset--color--white) !important;
+						background-color: var(
+							--wp--preset--color--black
+						) !important;
+						border: solid 1px var(--wp--preset--color--white) !important;
+					}
+				}
+			}
+			//
+			//
+			&.is-style-outline {
+				> .wp-block-button__link {
+					color: var(--wp--preset--color--white);
+					&:hover {
+						color: var(--wp--preset--color--black) !important;
+						background-color: var(
+							--wp--preset--color--white
+						) !important;
+					}
+				}
+			}
+		}
+	}
+}

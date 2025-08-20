@@ -1,0 +1,42 @@
+//
+//
+//
+//
+
+.wp-block-pullquote {
+	padding: $base-margin 0;
+	margin: 0 0 0 0;
+	&:not(.aligncenter, .alignright) {
+		text-align: left;
+	}
+	p {
+		font-weight: inherit;
+		font-size: inherit;
+		line-height: inherit;
+	}
+	// ? the cite sadly inherits typography settings from the pullquote styles in theme.json
+	cite {
+		margin: $base-margin 0 0 0;
+		display: block;
+		font-style: normal;
+		font-size: var(--wp--preset--font-size--14-20);
+		line-height: 20px;
+	}
+	blockquote {
+		margin: 0;
+	}
+}
+
+//
+//
+//
+// * Hotfix for pullquotes within a media+text testimonial
+.wp-block-media-text {
+	> .wp-block-media-text__content {
+		> .wp-block-pullquote {
+			@include media(">=small") {
+				padding-top: 0;
+			}
+		}
+	}
+}

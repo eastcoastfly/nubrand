@@ -1,0 +1,31 @@
+
+// ? basic hero with breadcrumbs (scaffold)
+.pattern--hero-basic-breadcrumbs {
+
+	// 
+	> .wp-block-cover {
+		border-bottom: 1px solid var(--wp--preset--color--light);
+		padding-right: var(--wp--custom--spacing--outer);
+				padding-left: var(--wp--custom--spacing--outer);
+		border-bottom: 1px solid var(--wp--preset--color--neutral-3);
+	}
+
+	// 
+	> .wp-block-group {
+		padding-right: var(--wp--custom--spacing--outer);
+				padding-left: var(--wp--custom--spacing--outer);
+		margin: 0;
+	}
+	
+	// 
+	.nu__breadcrumbs {
+		padding: $base-margin 0;
+	}
+
+	+ .alignfull.has-background {
+		margin-top: 0;
+		padding-top: $margin_4x;
+		padding-bottom: $margin_4x;
+	}
+	
+}

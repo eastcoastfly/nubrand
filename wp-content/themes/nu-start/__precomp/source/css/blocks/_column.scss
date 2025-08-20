@@ -1,0 +1,32 @@
+//
+//
+// ! columns block does not resepect the content/wide max-width (it seems to always fill up the width)
+// ! in the back end; it does seem to work... strange...
+//
+//
+.wp-block-column {
+	// flush bottom edge
+	> *:last-child {
+		margin-bottom: 0;
+	}
+	// flush top edge
+	> *:first-child {
+		margin-top: 0;
+	}
+}
+
+.wp-block-column {
+	> .wp-block-group {
+		&:not(:first-child) {
+			margin-top: $margin_4x;
+			margin-top: var(--wp--style--block-gap);
+		}
+	}
+
+	@include media("<phone") {
+		margin-top: $margin_2x !important;
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+}

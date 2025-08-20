@@ -1,0 +1,230 @@
+//
+// * WordPress Core Navigation Block (NU Brand Guidelines Stylesheet)
+// ? This file is appended to the native block stylesheet whenever it loads (block is present)
+//
+.blocks--wrapper {
+	//
+	//
+	//
+	.wp-block-navigation {
+		// ? rotate the chevron when toggled
+		.wp-block-navigation-submenu__toggle {
+			@extend %transition;
+			&[aria-expanded="true"] {
+				transform: rotate(90deg);
+			}
+		}
+	}
+
+	//
+	//
+	//
+	// ? 				vertical
+	//
+	//
+	//
+	:is(.wp-block-navigation.is-vertical) {
+		.wp-block-navigation-item__content {
+			font-size: var(--wp--preset--font-size--14-20);
+			line-height: 20px;
+			opacity: 0.8;
+		}
+		.wp-block-navigation-item__label {
+			font-size: inherit;
+			line-height: inherit;
+		}
+
+		// override core default fly out to the right
+		.wp-block-navigation-item {
+			position: relative;
+			flex-flow: column nowrap;
+			align-items: flex-start;
+		}
+
+		// flush items together and against container
+		> .wp-block-navigation__container {
+			gap: 0;
+			width: 100%;
+		}
+
+		// square up the chevron
+		.wp-block-navigation-submenu__toggle {
+			position: absolute;
+			top: $half-margin;
+			right: 0;
+			z-index: 1;
+			margin: 0;
+			min-width: 24px;
+			min-height: 24px;
+			opacity: inherit;
+			// slightly increase chevron size
+			svg {
+				width: 14px !important;
+				height: 14px !important;
+			}
+		}
+
+		// align submenu items with an inset
+		.wp-block-navigation__submenu-container {
+			.wp-block-navigation-item__content {
+				padding-right: ($base-margin + $half-margin);
+				padding-left: ($base-margin + $half-margin);
+			}
+		}
+
+		//
+		.wp-block-navigation-item {
+			width: 100%;
+			flex: 1 0 auto;
+			// ? Hide submenu on original hover
+			&:hover {
+				.wp-block-navigation__submenu-container {
+					display: none;
+				}
+
+				// ? Do not hide submenu if icon is clicked to true
+				.is-active,
+				button[aria-expanded="true"] {
+					+ .wp-block-navigation__submenu-container {
+						display: block;
+					}
+				}
+			}
+		}
+		.wp-block-navigation-item__content {
+			width: 100%;
+			&.is-currently-active {
+				&.wp-block-navigation-item__content {
+					border-left: solid 2px var(--wp--preset--color--primary);
+				}
+			}
+		}
+		.wp-block-navigation-item {
+			// ? Push submenu to next line
+			&.has-child.open-on-hover-click {
+				// ? Push the arrow button to the right
+				flex: 1 0 auto;
+				width: 100%;
+				flex-flow: row wrap;
+
+				// ? Remove border from submenu
+				.wp-block-navigation__submenu-container {
+					border: none !important;
+					width: 100%;
+				}
+				&.submenu-revealed {
+					> .wp-block-navigation-item__content {
+						border-left: solid 2px var(--wp--preset--color--primary);
+					}
+				}
+			}
+		}
+
+		// ? top level nav items
+		> .wp-block-navigation__container {
+			> li > a {
+				padding-left: $base-margin;
+			}
+		}
+
+		.wp-block-navigation-item {
+			&:is(.is-active, .current-menu-item, .current-page-ancestor, .current-menu-ancestor, .current-menu-parent) {
+				> .wp-block-navigation-item__content {
+					background-color: var(--wp--preset--color--neutral-1);
+				}
+			}
+			&:is(.is-active, .current-menu-item) {
+				> .wp-block-navigation-item__content {
+					border-left: 2px solid var(--wp--preset--color--primary) !important;
+				}
+			}
+
+			// &.is-active,
+			// &.current-menu-item,
+			// &.current-page-ancestor,
+			// &.current-menu-ancestor,
+			// &.current-menu-parent {
+			// 	> .wp-block-navigation-item__content {
+			// 		border-left: 2px solid var(--wp--preset--color--primary) !important;
+			// 		background-color: var(--wp--preset--color--neutral-1);
+			// 	}
+			// }
+		}
+		.wp-block-navigation-item__content {
+			border-left: solid 2px var(--wp--preset--color--neutral-1);
+			flex: 1 0 auto;
+			padding: $base-margin 0;
+			&.is-active,
+			&:hover {
+				border-left: solid 2px var(--wp--preset--color--primary);
+				background-color: var(--wp--preset--color--neutral-1);
+				opacity: 1;
+			}
+		}
+
+		// ? disable fly-out behavior from Core - instead drop down in DOM
+		.has-child :is(.wp-block-navigation__submenu-container) {
+			position: relative;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: unset;
+			color: inherit;
+		}
+		//
+		//
+		//
+
+		.wp-block-navigation-item.has-child.is-opened {
+			background-color: var(--wp--preset--color--neutral-1);
+		}
+	}
+
+	//
+	//
+	//
+	// ? 			horizontal
+	//
+	//
+	//
+	:is(.wp-block-navigation:not(.is-vertical)) {
+		//
+		.wp-block-navigation-item__content {
+			border-bottom: 2px solid transparent;
+			padding: $margin_2x 0;
+			padding: $base-margin 0;
+			&:hover,
+			&:focus {
+				border-bottom: 2px solid var(--wp--preset--color--black);
+			}
+		}
+		.current-menu-item :where(.wp-block-navigation-item__content) {
+			border-bottom: 2px solid var(--wp--preset--color--black);
+		}
+		.wp-block-navigation-item__label {
+			font-size: var(--wp--preset--font-size--14-20);
+			line-height: 20px;
+			padding: 0 4px;
+			letter-spacing: 0.33px;
+		}
+	}
+}
+
+//
+//
+//
+// * This is for the "Our Team"-style filter
+.wp-block-navigation {
+	// * Avoid targeting the sidebar menu
+	&:not(.is-vertical) {
+		&.no-wrap {
+			> .wp-block-navigation__container {
+				@include media("<phone") {
+					// * Let the items wrap so they don't bleed outside the screen edges
+					flex-wrap: wrap;
+				}
+			}
+		}
+	}
+}

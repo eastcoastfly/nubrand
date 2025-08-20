@@ -1,0 +1,12 @@
+//
+//
+//
+//
+//
+.patterns--features--overview-and-2-cards-with-cta {
+	> * {
+		&:not(:first-child) {
+			margin-top: var(--wp--custom--spacing--outer);
+		}
+	}
+}

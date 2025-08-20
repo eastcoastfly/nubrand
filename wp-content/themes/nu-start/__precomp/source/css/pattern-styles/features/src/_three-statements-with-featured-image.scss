@@ -1,0 +1,41 @@
+//
+//
+//
+//
+//
+.patterns--features--three-statements-with-featured-image {
+	ul {
+		padding-inline-start: 20px;
+	}
+	@include media("<=small") {
+		>.wp-block-columns {
+			.wp-block-column {
+				> .wp-block-group.has-background {
+					padding: $margin_2x $base-margin;
+				}
+			}
+		}
+	}
+	@include media(">small") {
+		>.wp-block-columns {
+			margin-top: $margin_4x;
+			align-items: stretch;
+			> .wp-block-column {
+				align-self: unset;
+				> figure {
+					> img,
+					& {
+						height: 100%;
+					}
+				}
+			}
+		}
+		>.wp-block-columns {
+			.wp-block-column {
+				> .wp-block-group.has-background {
+					padding: $margin_2x $margin_4x;
+				}
+			}
+		}
+	}
+}

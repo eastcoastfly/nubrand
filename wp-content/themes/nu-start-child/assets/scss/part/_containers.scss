@@ -1,0 +1,142 @@
+#main {
+
+  .mb-370 { 
+    @media screen and (max-width: 640px) { margin-bottom: 90px!important; }
+    @media screen and (min-width: 641px) { margin-bottom: 130px!important; }
+    @media screen and (min-width: 981px) { margin-bottom: 370px!important; }
+  }
+  .mb-250 { 
+    @media screen and (max-width: 640px) { margin-bottom: 80px!important; }
+    @media screen and (min-width: 641px) { margin-bottom: 100px!important; }
+    @media screen and (min-width: 981px) { margin-bottom: 250px!important; }
+  }
+  .mb-240 { 
+    @media screen and (max-width: 640px) { margin-bottom: 80px!important; }
+    @media screen and (min-width: 641px) { margin-bottom: 100px!important; }
+    @media screen and (min-width: 981px) { margin-bottom: 240px!important; }
+  }
+  .mb-170 { 
+    @media screen and (max-width: 640px) { margin-bottom: 70px!important; }
+    @media screen and (min-width: 641px) { margin-bottom: 90px!important; }
+    @media screen and (min-width: 981px) { margin-bottom: 170px!important; }
+  }
+
+  .mb-140 { 
+    @media screen and (max-width: 640px) { margin-bottom: 70px!important; }
+    @media screen and (min-width: 641px) { margin-bottom: 90px!important; }
+    @media screen and (min-width: 981px) { margin-bottom: 140px!important; }
+  }
+
+  .mt-240 { 
+    @media screen and (max-width: 640px) { margin-top: 80px!important; }
+    @media screen and (min-width: 641px) { margin-top: 100px!important; }
+    @media screen and (min-width: 981px) { margin-top: 240px!important; }
+  }
+  .mt-170 { 
+    @media screen and (max-width: 640px) { margin-top: 70px!important; }
+    @media screen and (min-width: 641px) { margin-top: 90px!important; }
+    @media screen and (min-width: 981px) { margin-top: 170px!important; }
+  }
+
+  .mt-155 { 
+    @media screen and (max-width: 640px) { margin-top: 70px!important; }
+    @media screen and (min-width: 641px) { margin-top: 90px!important; }
+    @media screen and (min-width: 981px) { margin-top: 155px!important; }
+  }
+
+  .mt-sm-0 { @media screen and (max-width: 980px) { margin-top: 0px!important; } }
+  .mb-sm-0 { @media screen and (max-width: 980px) { margin-bottom: 0px!important; } }
+  
+  .mt-0 { margin-top: 0px!important; }
+  .mb-0 { margin-bottom: 0px!important; }
+
+  .max-w56p {
+    width: 100%;
+    max-width: 56%;
+    margin-right: auto;
+    margin-left: 0;
+    
+    @media screen and (max-width: 980px) { max-width: 100%; }
+  }
+
+  .container-w-80p {
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    max-width: 1920px;
+    @media screen and (max-width: 980px) { width: 90%; }
+    @media screen and (max-width: 640px) { width: 100%; }
+
+    .alignfull & {
+      @media screen and (max-width: 640px) { width: 90%; }
+    }
+  }
+
+  .w-56p-left {
+    padding: 0;
+    margin-left: 0!important;
+    margin-right: auto!important;
+    width: 56%;
+    max-width: 1920px;
+    @media screen and (max-width: 980px) { width: 90%; }
+    @media screen and (max-width: 640px) { width: 100%; }
+  }
+
+  .w-60p-left {
+    padding: 0;
+    margin-left: 0!important;
+    margin-right: auto!important;
+    width: 60%;
+    max-width: 1920px;
+    @media screen and (max-width: 980px) { width: 90%; }
+    @media screen and (max-width: 640px) { width: 100%; }
+  }
+
+  .w-70p-left {
+    padding: 0;
+    margin-left: 0!important;
+    margin-right: auto!important;
+    width: 70%;
+    max-width: 1920px;
+    @media screen and (max-width: 980px) { width: 90%; }
+    @media screen and (max-width: 640px) { width: 100%; }
+  }
+
+  .container-w-70vw {
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70vw;
+    max-width: 1920px;
+    @media screen and (max-width: 980px) { width: 80%; }
+    @media screen and (max-width: 640px) { width: 100%; }
+    
+    .alignfull & {
+      @media screen and (max-width: 640px) { width: 90%; }
+    }
+  }
+
+  .container-w-80vw {
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80vw;
+    max-width: 1920px;
+    @media screen and (max-width: 980px) { width: 80%; }
+    @media screen and (max-width: 640px) { width: 100%; }
+
+    .alignfull & {
+      @media screen and (max-width: 640px) { width: 90%; }
+    }
+  }
+}
+
+
+@media screen and (min-width: 981px) {
+  .hide-on-desktop { display: none!important;}
+}
+
+@media screen and (max-width: 980px) {
+  .hide-on-mob { display: none!important;}
+}

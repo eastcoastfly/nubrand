@@ -1,0 +1,193 @@
+/* 
+
+*/
+//
+
+// ? also loaded in editor
+:is(.grid-item.nu_events) {
+	//
+	//
+	.nu__datetime {
+		@include nu__date_time_block_styles();
+	}
+	//
+	//
+	.date_time_container {
+		margin-top: $margin_2x;
+		.location,
+		.nu__datetime-times {
+			color: #545454;
+			font-size: var(--wp--preset--font-size--14-20) !important;
+			line-height: 14px;
+		}
+	}
+
+	//
+	//
+	// ? very-wide image
+	figure {
+		@include aspect-ratio(16, 9);
+		img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+		}
+	}
+
+	// ? set to specific brand value for now
+	.location {
+		margin: 0;
+		margin-top: $half-margin;
+		font-weight: 400;
+		font-size: var(--wp--preset--font-size--16-24);
+		span {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		> .fa-location-dot {
+			margin-right: $half-margin;
+			line-height: 1;
+		}
+	}
+
+	.event-type {
+		font-weight: 400;
+		width: 100%;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		font-size: var(--wp--preset--font-size--12-16);
+		line-height: 16px;
+
+		// ? we have disabled this little tick
+		&:before {
+			content: "";
+			display: inline-block;
+			border: 1px solid var(--wp--preset--color--black);
+			border-radius: 50%;
+			width: 8px;
+			height: 8px;
+			margin: 0 $base-margin 0 0;
+			display: none; // ! disabled for now
+		}
+	}
+	//
+}
+
+// ? only front-end
+:is(.blocks--wrapper .grid-item.nu_events) {
+}
+
+//
+//
+//
+//
+//
+//
+//
+// ? traversal and/or specificity matching
+.posts-grid {
+	// ? traversal and/or specificity matching
+	.nu__grid {
+		// ? set to specific brand value for now
+
+		.grid-item.nu_events {
+			// ? because the date-time block is not actually loaded we need to pull the styles in directly
+
+			&.has-layout-vertical {
+				.contains-clickable-area {
+					height: 100%;
+					display: flex;
+					flex-flow: column nowrap;
+					.grid-item-content {
+						flex: 1 0 auto;
+						display: flex;
+						flex-flow: column nowrap;
+						justify-content: space-between;
+					}
+				}
+
+				// no figure element
+				.grid-item-content:first-child {
+					margin-left: $margin_6x;
+					.date_time_container {
+						margin-top: $base-margin;
+						display: flex;
+						flex-flow: row nowrap;
+						align-items: center;
+						gap: $base-margin;
+					}
+					.location {
+						margin: 0;
+					}
+					.post-title {
+						font-size: var(--wp--preset--font-size--20-28);
+						@include rfs(28px, line-height);
+					}
+				}
+			}
+			// ? happens-on 'badge'
+			.grid-item-content + .nu__datetime {
+				@extend %transition;
+				position: absolute;
+				top: $half-margin;
+				left: $half-margin;
+				color: white;
+				background-color: var(--wp--preset--color--black);
+				width: 80px;
+				height: 80px;
+
+				.nu__datetime-dates {
+					text-align: center;
+					&:before {
+						display: none;
+					}
+				}
+
+				.day,
+				.month,
+				.year {
+					color: white;
+					display: inline-block;
+					font-weight: 300;
+					line-height: 1;
+				}
+				.month {
+					font-size: var(--wp--preset--font-size--16-24);
+				}
+				.day {
+					font-size: var(--wp--preset--font-size--36-40);
+				}
+				.year {
+					font-size: var(--wp--preset--font-size--12-16);
+					display: none;
+				}
+			}
+			// ? end of happens-on 'badge'
+
+			> a.contains-clickable-area {
+				&:hover,
+				&:focus {
+					.post-title {
+						span {
+							text-decoration: underline;
+							text-decoration-thickness: 1px;
+							text-decoration-color: var(
+								--wp--preset--color--nu-red
+							);
+						}
+					}
+					&:after {
+						color: var(--wp--preset--color--nu-red);
+					}
+				}
+			}
+
+			.grid-item-content {
+				padding: ($base-margin + $half-margin) $margin_2x;
+				@include flush_inner_content_vertical;
+			}
+		}
+	}
+}

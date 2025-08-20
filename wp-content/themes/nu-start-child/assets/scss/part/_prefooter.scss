@@ -1,0 +1,27 @@
+/*  Pre-footer  */
+#main {
+
+  .is-the-prefooter-section {
+    padding: 90px 0;
+    border-bottom: 1px solid;
+    margin-top: 0;
+
+    .wp-block-group {
+      width: 50%;
+      padding: 0;
+      margin: auto;
+      
+      @media screen and (max-width: 980px) { width: 80%; }
+      @media screen and (max-width: 640px) { width: 90%; }
+
+      .btn--prefooter a {
+        border: 1px solid #fff;
+      }
+
+      p strong {
+        color: inherit;
+      }
+    }
+  }
+
+} // #main

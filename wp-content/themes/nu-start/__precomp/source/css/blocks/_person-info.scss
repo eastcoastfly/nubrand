@@ -1,0 +1,74 @@
+/* 
+
+Person Info Stylesheet
+
+*/
+.person-info {
+	color: var(--wp--preset--color--dark);
+
+	> div {
+		display: flex;
+		flex-flow: column nowrap;
+		align-items: flex-start;
+	}
+
+	// resets for about section
+	.about {
+		h2,
+		h3 {
+			color: var(--wp--preset--color--dark);
+			font-weight: 300;
+			margin: 0;
+		}
+		h3 {
+			margin-top: $base-margin;
+			font-size: var(--wp--preset--font-size--20-28);
+		}
+	}
+
+	// resets for contact section
+	.contact {
+		margin-top: $margin_2x;
+		color: #545454;
+		p {
+			margin: 0;
+			font-size: var(--wp--preset--font-size--14-20);
+			&:not(:first-child) {
+				margin-top: $half-margin;
+			}
+			> a {
+				width: 100%;
+				padding-left: 0;
+			}
+			&.email {
+				.fa-envelope {
+					margin-right: $base-margin;
+				}
+			}
+			&.phone-number {
+				.fa-phone {
+					margin-right: $base-margin;
+				}
+			}
+		}
+	}
+
+	// styles for our inline "button-ish" elements
+	.has-inline-icon {
+		a,
+		span {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		a {
+			border-radius: 5px;
+			padding: $half-margin $base-margin;
+			border-bottom: 0px solid transparent;
+			background-color: var(--wp--preset--color--light);
+			&:hover,
+			&:focus {
+				border-bottom: 0px solid transparent;
+			}
+		}
+	}
+}

@@ -1,0 +1,135 @@
+/* nu-table  */
+#main {
+  .nu-table {
+    width: 80%;
+    max-width: 1920px;
+    margin: auto auto var(--section-margin);
+    padding: 0;
+
+    @media screen and (max-width: 1280px) { width: 90%; }
+    @media screen and (max-width: 980px) { margin: auto; }
+    @media screen and (max-width: 640px) { width: 100%; }
+
+    &__header {
+      position: sticky;
+      top: 64px;
+      padding-bottom: 45px;
+      padding-top: 15px;
+      background: #fff;
+      @media screen and (max-width: 980px) { display: none; }
+
+      p {
+        font-size: 13px;
+        line-height: 18px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase; 
+      }
+
+      .admin-bar & { top: 96px; }
+    }
+    
+    &__row {
+      margin-top: 0;
+
+      & > .wp-block-column:nth-child(1) {
+        p {
+          font-size: 13px;
+          line-height: 18px;
+          letter-spacing: 0.1em;
+          text-transform: uppercase; 
+          
+          @media screen and (max-width: 980px) {
+            font-weight: 900;
+          }
+        }
+      }
+
+      & > .wp-block-column:nth-child(2) {
+        margin-bottom: 30px;
+
+        & > .wp-block-columns {
+          @media screen and (max-width: 980px) {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+          }
+
+          & > .wp-block-column {
+            border: 1px solid #cfc7c0;
+            position: relative;
+            
+            .nu-table-not-app {
+              position: relative;
+              margin: 0;
+              width: 100%;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 13px;
+              line-height: 18px;
+              letter-spacing: 0.1em;
+              text-transform: uppercase;
+            }
+            
+            @media screen and (min-width: 981px) {
+              height: 12vw;
+            }
+            
+            @media screen and (max-width: 980px) {
+              height: 400px;
+              margin-bottom: 60px;
+              flex-basis: auto!important;
+
+              .nu-table-mob-title {
+                position: absolute;
+                left: 0;
+                width: 100%;
+                top: auto;
+                bottom: -28px;
+              }
+
+            }
+
+            @media screen and (max-width: 640px) { height: 300px; }
+            
+            figure {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              height: 100%;
+              background-color: #fff;
+
+              img {
+                max-width: 60%;
+                @media screen and (max-width: 980px) { width: 250px; }
+                @media screen and (max-width: 640px) { width: 200px; }
+              }
+            }
+          }
+  
+        }
+
+        & > p {
+          margin-bottom: 60px;
+        }
+      }
+
+      .has-grey-columns .wp-block-column {
+        background-color: #ECE9E6;
+      }
+
+      @media screen and (max-width: 980px) {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    
+    .nu-table-mob-title {
+      font-size: 13px;
+      margin-top: 2px;
+      @media screen and (min-width: 981px) { display: none; }
+    }
+  }
+}

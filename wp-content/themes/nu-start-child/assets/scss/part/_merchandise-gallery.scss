@@ -1,0 +1,96 @@
+#main {
+  .merchandise-gallery {
+
+    > .wp-block-columns {
+
+      &:nth-child(1) {
+
+        > .wp-block-column {
+          @media screen and (max-width: 980px) {
+            height: 70vh;
+          }
+        }
+
+        @media screen and (max-width: 980px) {
+          margin-bottom: 30px;
+        }
+
+      }
+
+      &:nth-child(2) {
+        
+        @media screen and (min-width: 981px) {
+          gap: 1.5vw;
+          height: 36vw;
+        }
+        
+        @media screen and (max-width: 980px) {
+          gap: 30px;
+        }
+
+        > .wp-block-column:nth-child(2) {
+          @media screen and (min-width: 981px) {
+            height: 100%;
+          }
+
+
+          > .wp-block-group {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+
+            @media screen and (min-width: 981px) {
+              height: 100%;
+            }
+
+            @media screen and (max-width: 1280px) {
+              gap: 20px;
+            }
+
+            @media screen and (max-width: 980px) { gap: 30px; }
+            
+            figure {
+              height: 17vw;
+              @media screen and (max-width: 980px) {
+                height: auto;
+                width: 100%;
+              }
+            }
+
+          }
+        }
+
+      }
+
+      figure {
+        width: 100%;
+        height: 100%;
+        &:not(.aos-init) { opacity: 0; }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+
+      @media screen and (max-width: 980px) { 
+        flex-direction: column;
+        flex-wrap: nowrap!important;
+        gap: 30px;
+
+        .wp-block-column {
+          flex-basis: 0!important;
+        }
+      }
+
+    }
+
+    > p {
+      margin: 55px auto 0;
+      width: 69vw;
+    }
+  }
+}

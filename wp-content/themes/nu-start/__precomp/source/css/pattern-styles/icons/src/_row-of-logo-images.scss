@@ -1,0 +1,30 @@
+//
+//
+//
+.patterns--partnerships--row-of-logo-images {
+	> * {
+		&:not(:first-child) {
+			margin-top: var(--wp--custom--spacing--outer);
+		}
+	}
+	.wp-block-image {
+		min-width: 120px;
+		max-width: 200px;
+	}
+	> .wp-block-group {
+		flex-flow: row wrap;
+	}
+
+	.wp-block-group {
+		@include media(">=phone", "<medium") {
+			flex-wrap: nowrap !important;
+		}
+
+		.wp-block-image {
+			@include media(">=phone", "<small") {
+				flex-basis: 40%;
+				max-width: 100% !important;
+			}
+		}
+	}
+}

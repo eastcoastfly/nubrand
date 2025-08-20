@@ -1,0 +1,172 @@
+/** 
+*
+* *		Reset WP Forms styling and further customize to fit NU brand requirements
+*
+*/
+//
+
+div.wpforms-container-full {
+	form.wpforms-form {
+		input[type="checkbox"],
+		input[type="radio"] {
+			border-width: 1px;
+			width: 16px;
+			height: 16px;
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		// adjust labels
+		.wpforms-field-sublabel,
+		.wpforms-field-label-inline,
+		.wpforms-field-label {
+			letter-spacing: 0.33px;
+			font-weight: 400;
+			@include rfs(20px, line-height);
+			@include rfs(14px);
+			// color: var(--wp--preset--color--dark);
+		}
+
+		// ? reset wpforms included styles for various elements
+		// ? this codeblock should stay generic
+		.wpforms-field {
+			*::placeholder {
+				letter-spacing: 0.33px;
+				font-weight: 300;
+				@include rfs(20px, line-height);
+				@include rfs(14px);
+				opacity: 0.8;
+				// color: var(--wp--preset--color--dark);
+			}
+
+			input,
+			textarea,
+			select,
+			option {
+				border-color: var(--wp--preset--color--neutral-3);
+			}
+			select {
+				font-weight: 300;
+				@include rfs(20px, line-height);
+				@include rfs(14px);
+				option {
+					font-weight: inherit;
+					font-size: inherit;
+				}
+			}
+		}
+
+		.wpforms-field-textarea {
+			textarea {
+				font-family: "Lato", sans-serif, "Material Icons";
+				min-height: 200px;
+			}
+		}
+		.wpforms-field-name {
+			.wpforms-field-row-block {
+				display: flex;
+				flex-flow: column-reverse nowrap;
+				label {
+					margin: 0;
+				}
+				input {
+					margin: 0;
+					margin-top: $half-margin;
+				}
+			}
+		}
+
+		// ? handle the submit button style and alignment
+		.wpforms-submit-container {
+			// ? really specific rather than using !important
+			button.wpforms-submit[type="submit"][name="wpforms[submit]"] {
+				@extend %nu__buttonstyle;
+				text-align: right;
+				font-weight: 400;
+				border: 1px solid var(--wp--preset--color--black);
+				background-color: var(--wp--preset--color--black);
+				color: white;
+				&:hover,
+				&:focus,
+				&:active {
+					border: 1px solid var(--wp--preset--color--black);
+					background: white;
+					color: var(--wp--preset--color--black);
+				}
+			}
+		}
+	}
+}
+
+//
+//
+//
+// * Hotfix for wp-forms (e.g. Contact page) - FROM OAKLAND
+.wpforms-container-full {
+	// * The form itself
+	.wpforms-form {
+		// * The fields
+		.wpforms-field-container {
+			> .wpforms-field {
+				input,
+				pform select,
+				textarea {
+					font-family: "Lato";
+					color: var(--wp--preset--color--black);
+					// * Darken placeholder text for better visibility
+					&::placeholder {
+						color: var(--wp--preset--color--neutral-5);
+						opacity: 1;
+						font-weight: 400;
+					}
+				}
+
+				input,
+				select {
+					// * Set height of inputs and selects to 48px (per Denise)
+					height: $margin_3x;
+				}
+			}
+		}
+		// * The submit section
+		.wpforms-submit-container {
+			// * Push the button to the right
+			text-align: right;
+			// * the actual submit button
+			.wpforms-submit {
+				// * To keep padding like the other buttons on the site
+				padding: 14px 24px !important;
+				// * Change the button to red outline (to be consistent with site)
+				background-color: transparent !important;
+				color: var(--wp--preset--color--nu-red) !important;
+				border: solid 1px var(--wp--preset--color--nu-red) !important;
+
+				&:hover {
+					background-color: var(
+						--wp--preset--color--nu-red
+					) !important;
+					color: var(--wp--preset--color--white) !important;
+				}
+			}
+		}
+	}
+}
+
+//
+//
+//
+//
+// * Hotfix for border color in wp-forms
+// ! BANDAID-ish (from OAKLAND)
+div.wpforms-container-full {
+	form.wpforms-form {
+		.wpforms-field {
+			input,
+			textarea,
+			select,
+			option {
+				border-color: var(--wp--preset--color--neutral-3) !important;
+			}
+		}
+	}
+}

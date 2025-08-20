@@ -1,0 +1,65 @@
+
+
+.marks {
+  #main & {
+    margin-top: 0;
+  }
+
+  &:not(.aos-init) { opacity: 0; }
+
+  .wp-block-columns {
+    margin-bottom: var(--section-margin);
+    
+    .wp-block-column {
+      position: relative;
+      border: 1px solid #cfc7c0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-right: inherit;
+      margin-bottom: 0;
+      height: 20vw;
+
+      figure {
+        img {
+          width: 100%;
+          height: 8vw;
+          min-height: 100px;
+          object-fit: contain;
+        }
+      }
+    }
+
+    @media screen and (max-width: 980px) { 
+      margin: 0 0 var(--section-margin-mob);
+      flex-direction: column;
+      gap: var(--section-margin-mob);
+
+
+      .wp-block-column {
+        height: 400px;
+        flex-basis: auto!important;
+
+        figure img {
+          height: auto;
+          width: 250px;
+          max-height: 90%;
+          object-fit: contain;
+
+        }
+      }
+    }
+
+    @media screen and (max-width: 640px) { 
+      .wp-block-column {
+        height: 300px;
+        figure img {
+          width: 200px;
+          object-fit: contain;
+        }
+      }
+    }
+
+  }
+}

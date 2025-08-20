@@ -1,0 +1,29 @@
+.nu__breadcrumbs {
+	position: relative;
+	z-index: 1;
+	display: block;
+	margin: $base-margin auto 0 auto;
+	padding: $base-margin;
+	float: none !important;
+	&.textalign-center {
+		text-align: center;
+	}
+	&.textalign-right {
+		text-align: right;
+	}
+
+	@include clearfix();
+
+	&.wide {
+		max-width: 90%;
+	}
+}
+
+div.breadcrumbs[typeof="BreadcrumbList"] {
+	font-size: 12px;
+
+	.fa-chevron-right {
+		vertical-align: middle;
+		margin: 0 8px;
+	}
+}

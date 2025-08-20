@@ -1,0 +1,97 @@
+#main {
+
+  .left-border-content {
+    // width: 70vw;
+    width: 80%;
+    margin: auto auto 170px;
+    padding: 0;
+    border-left: 1px solid black;
+    max-width: none;
+
+    @media screen and (max-width: 980px) { 
+      width: 80vw; 
+      margin-bottom: 90px;
+    }
+    
+    &:not(.aos-init) { opacity: 0; }
+    
+    &.w-80vw {
+      width: 80vw;
+      max-width: 1920px;
+      @media screen and (max-width: 640px) { width: 100%; }
+    }
+
+    .left-border-box {
+      width: 80%;
+      margin: auto;
+
+      @media screen and (max-width: 640px) { width: 90%; }
+    }
+  }
+
+  .infobox-vt {
+    margin-top: 69px;
+    margin-bottom: 68px;
+    gap: 5%;
+    
+    @media screen and (max-width: 980px) {
+      gap: 30px;
+      flex-direction: column;
+    }
+
+
+
+    .wp-block-column {
+      padding-right: 3.7%;
+    }
+
+    .num-in-circle {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      border: 1px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  /* /messaging/global-university-system/ */
+  .wp-block-group.gus-counts {
+    width: 70vw;
+    padding: 0;
+    margin: 0 auto 50px;
+    
+    &:not(.aos-init) { opacity: 0; }
+    
+    @media screen and (max-width: 980px) {
+      width: 80vw; 
+      margin: 0 auto;
+      padding-bottom: 0!important;
+    }
+    @media screen and (max-width: 640px) { 
+      width: 100%;
+      h5 { font-size: 18px;}
+    }
+    
+    .wp-block-columns {
+      width: 60%;
+      margin: 0 0 0 auto;
+      gap: 0;
+      @media screen and (max-width: 980px) {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        gap: 5px;
+      }
+
+
+      .wp-block-column {
+        width: 33.33%;
+        flex: 0 0 30%;
+        p { margin-top: 10px; }
+      }
+    }
+  }
+}

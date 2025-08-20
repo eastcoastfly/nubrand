@@ -1,0 +1,38 @@
+/* 
+*    basic elements
+*/
+
+// image elements
+video,
+img {
+	max-width: 100%;
+	height: auto;
+	vertical-align: bottom;
+	object-fit: cover;
+}
+
+figure {
+	max-width: 100%;
+	img {
+		width: 100%;
+	}
+}
+figcaption {
+	color: inherit;
+}
+iframe {
+	border: none;
+	overflow: hidden;
+	max-width: 100%;
+}
+
+/* 
+	? 	styles below restricted to within the blocks wrapper -- avoid touching footer/header etc
+*/
+.blocks--wrapper {
+
+	a.button,
+	button.button {
+		@extend %nu__buttonstyle;
+	}
+}

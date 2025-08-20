@@ -1,0 +1,51 @@
+#main {
+
+  .colors-menu {
+    & > p {
+      max-width: 40%;
+      margin-top: 37px;
+      
+      @media screen and (max-width: 980px) { max-width: 100%; }
+    }
+
+    > .wp-block-columns {
+
+      margin-top: 100px;
+      gap: 3%;
+      @media screen and (max-width: 980px) { 
+        gap: 3vw;
+        margin-top: 3vw;
+        flex-wrap: wrap!important;
+
+        .wp-block-column {
+          width: calc(50% - 3vw);
+          flex-shrink: 1;
+          flex-basis: auto;
+          max-width: 50%;
+        }
+      }
+
+      &:first-of-type { margin-top: 90px; }
+
+      .nu-circle-color {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border-radius: 50%;
+        font-size: 0;
+        color: transparent;
+
+        + p {
+          margin-top: 15px;
+          line-height: 1.7;
+        }
+      }
+    }
+
+    @media screen and (max-width: 980px) { 
+      margin-top: var(--section-margin-mob);
+    }
+
+  }
+
+}

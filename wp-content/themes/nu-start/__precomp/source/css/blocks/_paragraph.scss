@@ -1,0 +1,30 @@
+/* 
+
+*/
+
+//
+//	? large style
+//
+:is(p.is-style-large) {
+	font-weight: 300;
+	font-size: var(--wp--preset--font-size--24-32);
+	line-height: var(--wp--custom--line-height--rfs-32);
+}
+
+//
+//	? eyebrow style
+//
+:is(p.is-style-eyebrow) {
+	font-weight: 400;
+	letter-spacing: 3px;
+	width: 100%;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--neutral-5);
+	font-size: var(--wp--preset--font-size--12-16);
+	line-height: 16px;
+	@extend %transition;
+
+	&.has-active-text-color {
+		color: var(--wp--preset--color--primary) !important;
+	}
+}

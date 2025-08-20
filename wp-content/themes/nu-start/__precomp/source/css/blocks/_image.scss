@@ -1,0 +1,25 @@
+/* 
+	styling adjustments for the image block
+*/
+//
+
+:is(.wp-block-image.is-style-floating-cite) {
+	position: relative;
+	figcaption {
+		position: absolute;
+		z-index: 1;
+		background-color: var(--wp--preset--color--light);
+		padding: $base-margin;
+		bottom: $base-margin;
+		right: $base-margin;
+		margin: 0;
+		@include media(">=phone") {
+			max-width: 55%;
+		}
+		@include media("<phone") {
+			max-width: 100%;
+			// * Move it below the image to not crowd it
+			position: static;
+		}
+	}
+}

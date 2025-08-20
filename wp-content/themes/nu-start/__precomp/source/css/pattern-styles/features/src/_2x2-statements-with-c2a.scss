@@ -1,0 +1,25 @@
+//
+//
+//
+//
+//
+//
+//
+.patterns--features--2x2-statements-with-c2a {
+	@include media(">small") {
+		> .wp-block-group:last-child {
+			margin-top: $margin_4x;
+			padding: 0 var(--wp--custom--spacing--outer);
+			
+			// 
+			> .wp-block-columns {
+				gap: $margin_4x;
+				+ .wp-block-buttons,
+				+ .wp-block-columns {
+					margin-top: $margin_4x;
+				}
+			}
+		}
+		
+	}
+}

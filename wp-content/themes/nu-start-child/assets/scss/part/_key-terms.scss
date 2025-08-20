@@ -1,0 +1,110 @@
+#main {
+  .abc-anchors {
+    width: 30.8%;
+    margin-top: 10px;
+    
+    @media screen and (max-width: 640px) { width: 90%; }
+
+    
+    .wp-block-navigation__responsive-container {
+      display: block;
+      width: 100%;
+      position: relative;
+      z-index: auto;
+      
+      &-open, &-close { display: none; }
+    }
+
+    ul.wp-block-navigation__container {
+      width: 100%;
+      
+      > li {
+        width: 100%;
+        justify-content: space-between;
+        border-bottom: 1px solid;
+
+        > .wp-block-navigation-item__content {
+          font-size: 20px;
+          padding: 17px 0 12px;
+        }
+        
+        button.wp-block-navigation-submenu__toggle {
+          display: block;
+          width: 100%;
+          height: 40px;
+          transform: rotate(0); 
+
+          svg { width: 20px; }
+
+          &[aria-expanded="true"] svg {
+            transform: rotate(90deg); 
+          }
+        }
+
+        &.open-on-click {
+
+          button.wp-block-navigation-submenu__toggle {
+            text-align: left;
+            padding: 0;
+            border: none;
+            span { font-size: 22px; }
+          }
+
+          .wp-block-navigation__submenu-icon {
+            margin-right: 10px;
+            svg { 
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+      }
+    }
+    
+    ul.wp-block-navigation__submenu-container {
+      width: 100%;
+      padding: 20px 0;
+      max-height: 500px;
+      overflow: auto;
+      border-top: 3px solid #2ea3f2;;
+      li {
+        padding: 0 20px;
+
+        a {
+          padding: 20px 20px 6px;
+          border: none;
+          background: transparent;
+          transition: opacity 250ms, background 250ms;
+          opacity: 1;
+          
+          span {
+            font-size: 20px;
+          }
+
+          &:hover {
+            background-color: rgb(0 0 0 / 3%);
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+
+  }
+
+  .abc-wrap {
+
+    > .wp-block-group {
+      margin-bottom: 45px;
+      margin-top: 0;
+
+      > p[id] {
+        font-size: 24px;
+        line-height: 32px;
+      }
+
+      .wp-block-nu-blocks-accordion {
+        margin: 54px 0 0;
+      }
+    }
+  }
+}

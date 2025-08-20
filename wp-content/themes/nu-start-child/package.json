@@ -1,0 +1,19 @@
+{
+  "name": "x20",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "laravel-mix": "^4.0.14",
+    "sass": "^1.22.12",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.6.14"
+  }
+}

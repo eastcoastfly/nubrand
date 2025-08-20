@@ -1,0 +1,21 @@
+/* 
+
+*/
+
+//
+//
+//
+:where(.itsglobalheader--container) {
+	height: 48px;
+}
+
+//
+//
+//
+:where(#nu-global-footer) {
+	a {
+		&:hover {
+			border: none 0;
+		}
+	}
+}

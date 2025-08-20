@@ -1,0 +1,20 @@
+//
+//
+//
+//
+//
+
+.patterns--content-teaser--latest-news-and-events,
+.patterns--showcase--latest-news-and-events {
+
+	
+	// either latest news or events "row" collapses early (with main nav)
+	@include media("<=medium") {
+		> .wp-block-columns {
+			flex-wrap: wrap !important;
+			> .wp-block-column {
+				flex-basis: 100% !important;
+			}
+		}
+	}
+}

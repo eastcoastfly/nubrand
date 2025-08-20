@@ -1,0 +1,152 @@
+/* 
+	use the block style class "is-style-as-hero" to separate hero-ish code from the normal cover block
+*/
+.wp-block-cover.is-style-as-hero {
+	//
+	//
+	//
+	// padding: $base-margin 0;
+	width: unset;
+	max-width: unset;
+	.wp-block-cover__inner-container {
+		margin: 0 auto;
+		.wp-block {
+			margin: $base-margin auto 0 auto;
+		}
+		@include add-top-level-outer-spacing();
+	}
+	> :is(:not(.wp-block-cover__inner-container)) {
+		@include media("<=large") {
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}
+	}
+	//
+	//
+	//
+
+	.wp-block-cover__image-background {
+		width: 100%;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	//
+	//
+	//
+
+	.wp-block-group {
+		margin: 0 0 $base-margin 0;
+		&:last-child {
+			margin: 0 0 0 0;
+		}
+	}
+}
+
+.wp-block-group,
+.wp-block-cover {
+	&.has-style-tucks-next-block-over,
+	&.cover_tucks_next_block {
+		margin-bottom: -#{$margin_6x} !important; // 2x margin less than the padding; to have vertical space (difference will be visible margin)
+		+ .wp-block,
+		+ .wp-block-columns,
+		+ .posts-grid,
+		+ .wp-block-image,
+		+ .wp-block-group,
+		+ .wp-block-buttons {
+			margin-top: 0 !important;
+			margin-bottom: 0 !important;
+			position: relative;
+			z-index: 1;
+			min-height: $margin_6x;
+		}
+	}
+}
+
+.wp-block-cover {
+	padding: 0;
+	&.has-custom-content-position {
+		&.is-position-center-left,
+		&.is-position-top-left,
+		&.is-position-bottom-left {
+			.wp-block-cover__inner-container {
+				margin-left: 0;
+			}
+		}
+		&.is-position-center-right,
+		&.is-position-top-right,
+		&.is-position-bottom-right {
+			.wp-block-cover__inner-container {
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+
+//
+//
+//
+// * Cover pattern with flush right and bottom edges (from Oakland)
+.patterns--covers--inner-container-flushes-edges {
+	.wp-block-cover {
+		padding: 0;
+		&.has-custom-content-position {
+			&.is-position-middle-left,
+			&.is-position-top-left,
+			&.is-position-bottom-left {
+				.wp-block-cover__inner-container {
+					margin-left: 0;
+				}
+			}
+			&.is-position-middle-right,
+			&.is-position-top-right,
+			&.is-position-bottom-right {
+				.wp-block-cover__inner-container {
+					margin-right: 0;
+				}
+			}
+		}
+	}
+}
+
+//
+//
+//
+// * Hotfixes for Cover: "Sharing New Knowledge" (from Oakland)
+.sharing-knowledge-cover {
+	// ? This is that same issue with the covers I discovered the other day (It's normally 100% wide)
+	.wp-block-cover__inner-container {
+		@include media(">=medium") {
+			// width: 50% !important;
+		}
+		> .wp-block-group {
+			width: 100%;
+			padding: $margin_4x;
+		}
+	}
+}
+//
+//
+//
+// * Hotfix for all COVERS with a fixed-width inner content group (from Oakland)
+.patterns--covers--has-max-width-content {
+	> .wp-block-cover {
+		// ? quickly adding the 'top level outer spacing' here
+		.wp-block-cover__inner-container {
+			// * Content div with background color/fixed width
+			> .wp-block-group.has-background {
+				padding: $margin_2x;
+			}
+			@include media(">=medium") {
+				// ! This mixin is undefined on the framework
+				// @include add-top-level-outer-spacing();
+				> .wp-block-group.has-background {
+					max-width: 720px;
+					padding: $margin_4x;
+					margin-right: var(--wp--custom--spacing--outer);
+				}
+			}
+		}
+	}
+}

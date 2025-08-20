@@ -1,0 +1,66 @@
+//
+//
+//
+.pattern--heroes-homepage-extratall,
+.pattern--heroes-homepage-tall {
+	> .wp-block-cover {
+		border-bottom: 1px solid var(--wp--preset--color--light);
+		border-bottom: 1px solid var(--wp--preset--color--neutral-3);
+		padding-right: var(--wp--custom--spacing--outer);
+		padding-left: var(--wp--custom--spacing--outer);
+	}
+
+	//
+	> .wp-block-group {
+		padding-right: var(--wp--custom--spacing--outer);
+		padding-left: var(--wp--custom--spacing--outer);
+		margin-top: 0 !important;
+	}
+
+	//
+	.nu__breadcrumbs {
+		padding: $base-margin 0;
+	}
+	.wp-block-cover__inner-container {
+		> .has-background {
+			padding: $margin_4x !important;
+			margin: $margin_4x 0;
+		}
+	}
+	@include media(">=medium") {
+		.wp-block-cover__inner-container {
+			> .has-background {
+				max-width: 50%;
+			}
+		}
+	}
+	+ .alignfull.has-background {
+		margin-top: 0;
+		padding-top: $margin_4x;
+		padding-bottom: $margin_4x;
+		//
+		a.wp-block-button__link {
+			&:hover {
+				background-color: var(--wp--preset--color--white) !important;
+				color: var(--wp--preset--color--black) !important;
+			}
+		}
+	}
+	@include media("<=medium") {
+		> .wp-block-cover[style*="min-height"] {
+			min-height: unset !important;
+		}
+	}
+	@include media("<phone") {
+		> .wp-block-cover {
+			height: calc(100vh - var(--header--offset--top));
+
+			> .wp-block-cover__inner-container {
+				.wp-block-group.has-background {
+					// * Decrease the padding around hero text on mobile
+					padding: $margin_2x !important;
+				}
+			}
+		}
+	}
+}

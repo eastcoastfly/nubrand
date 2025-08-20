@@ -1,0 +1,28 @@
+/* 
+	this pattern...
+	- 2 col layout with heading on the left and content on the right
+	- - we break the heading side to above the content at large
+	-
+*/
+
+.patterns--layouts--split-headers-content {
+	//
+	> .wp-block-columns {
+		@include media(">=large") {
+			gap: max($margin_3x, 10%);
+		}
+		@include media("<large") {
+			gap: $margin_3x;
+		}
+
+		@include media("<large") {
+			// * Make the columns stack earlier than the usual medium breakpoint
+			flex-direction: column;
+			//
+			> .wp-block-column:first-child {
+				// * Let the left column assume full width
+				flex-basis: auto !important;
+			}
+		}
+	}
+}

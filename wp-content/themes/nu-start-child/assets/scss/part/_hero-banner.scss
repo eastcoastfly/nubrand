@@ -1,0 +1,101 @@
+#main .nu-hero {
+  --color: #696158;
+
+  .wp-block-cover__inner-container {
+    width: 80%;
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+
+    @media screen and (max-width: 980px) { width: 90%; }
+    @media screen and (max-width: 640px) { width: 100%; }
+
+    &:not(.aos-init) {     opacity: 0;  }
+  }
+  
+  @media screen and (min-width: 981px) {
+    min-height: 700px;
+    
+    &[style*="min-height:100vh"] {
+      min-height: var(--nu--full--screen--height)!important;
+    }
+  }
+  
+  @media screen and (max-width: 980px) {
+    padding-top: 90px;
+    padding-bottom: 90px;
+    min-height: auto;
+
+    &[style*="min-height"] {
+      min-height: auto!important;
+    }
+  }
+
+  &.alignfull .wp-block-cover__inner-container {
+    @media screen and (max-width: 640px) { width: 90%; }
+  }
+
+
+  .wp-block-columns {
+    margin-bottom: 0;
+  }
+
+  .is-dark-header & {
+    --color: #fff;
+  }
+
+  .nu__breadcrumbs {
+    width: 100%;
+    padding: 0;
+
+    svg.fa-chevron-right { 
+      color: var(--color);
+      vertical-align: 0;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 4px;
+        width: 5px;
+        height: 5px;
+        border-top: 1px solid var(--color);
+        border-right: 1px solid var(--color);
+        transform: rotate(45deg);
+      }
+    }
+
+    [typeof="ListItem"] {
+      color: var(--color);
+      font-style: normal;
+      font-weight: normal;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      
+      &:first-of-type, &:first-of-type + .sep,
+      &:first-of-type, &:first-of-type + svg {    display: none;  }
+
+      a {
+        text-decoration: none;
+        &:hover { text-decoration: underline; }
+      }
+    }
+
+    &:not(.show-all) {
+      [typeof="ListItem"] {
+
+        &:nth-child(5):not(:last-child),
+        &:nth-child(5):not(:last-child) + .sep,
+        &:nth-child(5):not(:last-child) + svg,
+        &:nth-child(7):not(:last-child),
+        &:nth-child(7):not(:last-child) + .sep,
+        &:nth-child(7):not(:last-child) + svg { display: none; }
+
+      }
+
+    }
+      
+  }
+}

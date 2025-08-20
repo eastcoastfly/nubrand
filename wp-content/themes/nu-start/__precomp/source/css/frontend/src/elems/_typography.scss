@@ -1,0 +1,145 @@
+/* 
+?  		typography only, not layout
+?		
+*/
+a {
+	@extend %transition;
+	color: currentColor;
+	text-decoration: none;
+}
+//
+:where(.blocks--wrapper) {
+	p {
+		margin-block-start: unset;
+		margin-block-end: unset;
+		+ p,
+		&:not(:first-child) {
+			margin-top: $base-margin;
+		}
+	}
+	// ? links need to be styled to our brand
+	// ? just the base level, no layout or modifiers
+	a {
+		color: var(--wp--preset--color--black);
+		//
+		text-decoration: 1px solid underline var(--wp--preset--color--nu-red);
+		text-decoration-color: var(--wp--preset--color--nu-red);
+		text-decoration-style: solid;
+		text-decoration-thickness: 1px;
+		text-decoration-line: underline;
+		text-underline-offset: 2px;
+
+		// * If there's a Font Awesome icon after the link
+		+ .svg-inline--fa {
+			color: var(--wp--preset--color--black);
+			font-size: small;
+			@extend %transition;
+		}
+
+		// * For external links, raise the 'new tab' icon like an exponent
+		+ .fa-arrow-up-right-from-square {
+			vertical-align: top;
+		}
+
+		&:hover {
+			text-decoration-color: transparent;
+			+ .svg-inline--fa {
+				// * Make the FA icon red and move to the right
+				color: var(--wp--preset--color--nu-red);
+				transform: translateX(8px);
+			}
+		}
+	}
+	p strong {
+		color: var(--wp--preset--color--black);
+	}
+}
+
+/* 
+	? 
+	? theme.json font values pass to :root, or <html>.
+	? we will re-assign new values on <body> to re-declare them in this scope rather than override them.
+	?
+*/
+:root,
+body {
+	@include rfs(128px, --wp--preset--font-size--128-128);
+	@include rfs(128px, --wp--custom--line-height--rfs-128);
+	//
+	@include rfs(96px, --wp--preset--font-size--96-96);
+	@include rfs(96px, --wp--custom--line-height--rfs-96);
+	//
+	@include rfs(72px, --wp--preset--font-size--72-72);
+	@include rfs(72px, --wp--custom--line-height--rfs-72);
+	//
+	@include rfs(60px, --wp--preset--font-size--60-60);
+	@include rfs(60px, --wp--custom--line-height--rfs-60);
+	//
+	@include rfs(48px, --wp--preset--font-size--48-48);
+	@include rfs(48px, --wp--custom--line-height--rfs-48);
+	//
+	@include rfs(36px, --wp--preset--font-size--36-40);
+	@include rfs(40px, --wp--custom--line-height--rfs-40);
+	//
+	@include rfs(30px, --wp--preset--font-size--30-36);
+	@include rfs(36px, --wp--custom--line-height--rfs-36);
+	//
+	@include rfs(24px, --wp--preset--font-size--24-32);
+	@include rfs(32px, --wp--custom--line-height--rfs-32);
+	//
+	@include rfs(20px, --wp--preset--font-size--20-28);
+	@include rfs(18px, --wp--preset--font-size--18-28);
+	@include rfs(28px, --wp--custom--line-height--rfs-28);
+	//
+	//
+	@include rfs(16px, --wp--preset--font-size--16-24);
+	@include rfs(28px, --wp--custom--line-height--rfs-24);
+	//
+	@include rfs(14px, --wp--preset--font-size--14-20);
+	@include rfs(12px, --wp--preset--font-size--12-16);
+}
+
+.has-128-128-font-size {
+	line-height: var(--wp--custom--line-height--rfs-128);
+}
+.has-96-96-font-size {
+	line-height: var(--wp--custom--line-height--rfs-96);
+}
+.has-72-72-font-size {
+	line-height: var(--wp--custom--line-height--rfs-72);
+}
+.has-60-60-font-size {
+	line-height: var(--wp--custom--line-height--rfs-60);
+}
+.has-48-48-font-size {
+	line-height: var(--wp--custom--line-height--rfs-48);
+}
+.has-36-40-font-size {
+	line-height: var(--wp--custom--line-height--rfs-40);
+}
+.has-30-36-font-size {
+	line-height: var(--wp--custom--line-height--rfs-36);
+}
+.has-24-32-font-size {
+	line-height: var(--wp--custom--line-height--rfs-32);
+}
+.has-18-28-font-size,
+.has-20-28-font-size {
+	line-height: var(--wp--custom--line-height--rfs-28);
+}
+.has-16-24-font-size {
+	line-height: var(--wp--custom--line-height--rfs-24);
+}
+
+.has-text-color {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	strong,
+	a:not(.wp-block-button__link) {
+		color: inherit;
+	}
+}

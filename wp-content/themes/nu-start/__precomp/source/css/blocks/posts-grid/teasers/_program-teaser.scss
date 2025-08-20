@@ -1,0 +1,95 @@
+//
+//
+//
+//
+// * Fresh, clean start with nesting
+.acf-block.posts-grid {
+	.nu__grid {
+		.grid-item.nu_programs {
+			> a {
+				&:hover,
+				&:focus {
+					.program-category > span {
+						background-color: var(--wp--preset--color--primary);
+					}
+				}
+			}
+			.grid-item-content {
+				position: relative;
+				display: flex;
+				flex-flow: column nowrap;
+				justify-content: center;
+
+				.program-category {
+					> span {
+						@extend %transition;
+						// background-color: var(--wp--preset--color--dark);
+						// border-radius: 4px;
+						background-color: var(--wp--preset--color--black);
+						color: var(--wp--preset--color--light);
+						font-size: var(--wp--preset--font-size--12-16);
+						line-height: 20px;
+						padding: 4px 8px;
+						display: inline-block;
+						letter-spacing: 0.33px;
+					}
+				}
+				.post-title {
+					span {
+						text-decoration: none;
+					}
+				}
+				.basic-program-info {
+					margin-top: $base-margin;
+					// * Stack the little program details on smaller screens to avoid awkward line wraps
+					@include media("<medium") {
+						display: flex;
+						flex-direction: column;
+					}
+					// * Each of the program info items
+					> div {
+						display: inline-block;
+						font-size: var(--wp--preset--font-size--12-16);
+						line-height: 20px;
+						margin-right: $base-margin;
+
+						// * Style all of the icons
+						&:before {
+							display: inline-block;
+							vertical-align: middle;
+							font-size: 16px;
+							line-height: 16px;
+							margin-right: 4px;
+						}
+					}
+					.location {
+						@include nu_fa_icon("\f3c5", before);
+					}
+					.duration {
+						@include nu_fa_icon("\f017", before);
+					}
+					.studyoptions {
+						@include nu_fa_icon("\f518", before);
+
+						> div {
+							display: inline-block;
+						}
+					}
+
+					.studyoptions {
+						div {
+							span {
+								display: inline;
+								&:not(:first-child) {
+									&:before {
+										content: "/";
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

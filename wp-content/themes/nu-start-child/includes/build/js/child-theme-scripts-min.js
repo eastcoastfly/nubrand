@@ -1,0 +1,1 @@
+!function($,o,n){$((function(){console.log("hello redwerks!")}))}(window.jQuery,window,document);

@@ -1,0 +1,15 @@
+//
+//
+//
+.is-the-404-section {
+	text-align: center;
+	margin: ($margin_4x + $base-margin) auto 0 auto;
+
+	+ .nu__sitesearch {
+		margin-top: 0;
+
+		.nu__sitesearch_toggle {
+			display: none;
+		}
+	}
+}

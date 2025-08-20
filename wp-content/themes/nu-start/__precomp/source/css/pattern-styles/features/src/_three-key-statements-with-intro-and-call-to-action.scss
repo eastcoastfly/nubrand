@@ -1,0 +1,21 @@
+//
+//
+//
+.patterns--features--three-key-statements,
+.patterns--features--three-key-statements-with-intro-and-call-to-action {
+
+	@include media(">medium") {
+		> .wp-block-columns {
+			margin-top: $margin_4x;
+			gap: $margin_4x;
+		}
+		> .wp-block-buttons {
+			margin-top: $margin_4x;
+		}
+	}
+	@include media("<=phone") {
+		> .wp-block-columns {
+			margin: $margin_4x 0;
+		}
+	}
+}

@@ -1,0 +1,68 @@
+//
+// ? the scroll-spying line thing
+//
+.temp--some-special-class {
+	margin-top: 0 !important;
+	padding-top: var(--wp--custom--spacing--large);
+	margin-bottom: 0px !important;
+	padding-bottom: var(--wp--custom--spacing--large);
+	position: relative;
+	p.is-style-eyebrow {
+		@include media(">=medium") {
+			color: var(--wp--preset--color--neutral-3);
+		}
+	}
+
+	@include add-top-level-outer-spacing();
+
+	.wp-block-separator.alignfull {
+		background-color: var(--wp--preset--color--neutral-3) !important;
+	}
+
+	> .alignfull {
+		padding-right: var(--wp--custom--spacing--outer);
+		padding-left: var(--wp--custom--spacing--outer);
+		//
+		&.has-background {
+			// * Avoid this padding for WP Separators!
+			&:not(.wp-block-separator) {
+				padding-bottom: var(--wp--custom--spacing--large);
+				padding-top: var(--wp--custom--spacing--large);
+			}
+		}
+	}
+
+	//
+	> .is-the-scroll-bar-track {
+		padding: 0 !important;
+		margin: 0 !important;
+		position: absolute;
+		top: 0;
+		left: $margin_2x;
+		width: 1px;
+		background-color: var(--wp--preset--color--neutral-3);
+		height: 100%;
+		z-index: 1;
+
+		//
+		.is-the-scroll-bar-thumb {
+			margin: 0;
+			position: -webkit-sticky;
+			position: sticky;
+			top: 240px;
+			top: max(240px, 30vh);
+			left: 0;
+			transform: translateX(-1px);
+			z-index: 2;
+			width: 3px;
+			height: $margin_4x;
+			background-color: var(--wp--preset--color--nu-red);
+		}
+	}
+
+	@include media("<medium") {
+		.is-the-scroll-bar-track {
+			display: none;
+		}
+	}
+}

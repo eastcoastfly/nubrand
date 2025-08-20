@@ -1,0 +1,213 @@
+//
+//
+//
+//
+%has-thin-accent-underline {
+	position: relative;
+	&:after {
+		content: "";
+		border-bottom: 1px solid;
+		border-color: inherit;
+		display: block;
+		margin: ($half-margin + $base-margin) 0 0 4px;
+		max-width: $margin_2x;
+	}
+}
+
+.wp-block-group.patterns--blurbs--basic-section-headline {
+	// ? this pattern expects markup
+	p:only-child,
+	h1,
+	h2 {
+		@extend %has-thin-accent-underline;
+	}
+}
+
+// * Blurbs with gray/red border and offset number with red circle
+
+/* 
+	This pattern ...
+	- enforces a default padding consistent with our card styles
+	- adds a custom border
+	- expects an offset accent area
+*/
+.patterns--blurbs--card-style-with-offset-accent {
+	// * Add borders and padding (per Figma)
+	border: solid 1px var(--wp--preset--color--neutral-3);
+	border-top: solid 1px var(--wp--preset--color--nu-red);
+	position: relative;
+	padding: $margin_3x $margin_2x;
+
+	// * The element in the red circle ("1", "A", etc)
+	.is-the-offset-accent {
+		// * Add the red circle border and position it
+		border: solid 1px var(--wp--preset--color--nu-red);
+		border-radius: 50%;
+		margin: 0 auto;
+		position: absolute;
+		top: 0;
+		transform: translate(-50%, -50%);
+		left: 50%;
+		// * Add background color to make it not transparent
+		background-color: var(--wp--preset--color--white);
+		font-size: 32px;
+		font-weight: 300;
+		// * Hide overflow and touchups
+		overflow: hidden;
+		// * Overrides for Denise's changes
+		height: 80px;
+		width: 80px;
+		line-height: 74px;
+	}
+
+	// FUCK
+	h3 + p {
+		margin-top: 16px !important;
+	}
+}
+
+//
+//
+//
+// * This is on the Mills Institute page (four numbered boxes)
+// ? This pattern could really pertain to anything we want to have children with equal heights
+.patterns--features--equal-height-columns-with-offset-accent-blurbs {
+	// * A&R for better breakpoints
+	@include media("<medium") {
+		display: grid !important;
+		grid-template-columns: auto auto;
+	}
+}
+
+// * Blurbs with gray/red border and offset number with red circle
+
+/* 
+	This pattern ...
+	- enforces a default padding consistent with our card styles
+	- adds a custom border
+	- expects an offset accent area
+*/
+.patterns--blurbs--card-style-with-offset-accent {
+	// * Add borders and padding (per Figma)
+	border: solid 1px var(--wp--preset--color--neutral-3);
+	border-top: solid 1px var(--wp--preset--color--nu-red);
+	position: relative;
+	padding: $margin_3x $margin_2x;
+
+	// * The element in the red circle ("1", "A", etc)
+	.is-the-offset-accent {
+		// * Add the red circle border and position it
+		border: solid 1px var(--wp--preset--color--nu-red);
+		border-radius: 50%;
+		margin: 0 auto;
+		position: absolute;
+		top: 0;
+		transform: translate(-50%, -50%);
+		left: 50%;
+		// * Add background color to make it not transparent
+		background-color: var(--wp--preset--color--white);
+		font-size: 32px;
+		font-weight: 300;
+		// * Hide overflow and touchups
+		overflow: hidden;
+		// * Overrides for Denise's changes
+		height: 80px;
+		width: 80px;
+		line-height: 74px;
+	}
+
+	// FUCK
+	h3 + p {
+		margin-top: 16px !important;
+	}
+}
+
+//
+//
+//
+// * This is on the Mills Institute page (four numbered boxes)
+// ? This pattern could really pertain to anything we want to have children with equal heights
+.patterns--features--equal-height-columns-with-offset-accent-blurbs {
+	// * A&R for better breakpoints
+	@include media("<medium") {
+		display: grid !important;
+		grid-template-columns: auto auto;
+	}
+	@include media("<phone") {
+		display: flex !important;
+	}
+
+	// * Add some breathing room at the top
+	padding-top: $margin_2x;
+
+	> .wp-block-column {
+		// * Add spacing on grid display in small/medium
+		@include media("<medium") {
+			margin-bottom: $margin_2x;
+		}
+		.patterns--blurbs--card-style-with-offset-accent {
+			@include media(">=phone") {
+				// * To make all the card heights the same
+				height: 100%;
+			}
+		}
+	}
+}
+
+//
+//
+//
+// * Blurb + image + image mosaic pattern (CAMPUS & LOCATIONS, THE ARTS)
+.patterns--pathways--blurb-image-image-mosaic {
+	> .wp-block-columns {
+		> .wp-block-column {
+			// * The blurb + image on the left
+			&:first-child {
+				height: 100%;
+			}
+
+			// * The vertical image on the right
+			&:not(:first-child) {
+				height: 100%;
+			}
+		}
+	}
+}
+
+//
+//
+// * The blurb + vertical image mosaic
+.temp--working-on-this-collage {
+	// ? Remove this to be same max-width as other WP blocks and groups on the page
+	margin-left: auto;
+	margin-right: auto;
+	.wp-block-column {
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: space-between;
+		> :only-child {
+			height: 100%;
+			&.wp-block-image {
+				img {
+					height: 100%;
+				}
+				@include media("<=small") {
+					display: none;
+				}
+			}
+		}
+		// all images forced to square on mobile
+		@include media("<=small") {
+			.wp-block-image {
+				@include aspect-ratio(1, 1);
+				img {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,60 @@
+//
+//
+//
+body.is-dark-header {
+	header.header {
+		border-bottom: 1px solid var(--wp--preset--color--black);
+		.utilitynav {
+			background-color: var(--wp--preset--color--black);
+		}
+
+		// ? Prevent links from turning black on dark mode after tapping
+		.navlinks > ul > li > a:hover {
+			color: var(--wp--preset--color--white) !important;
+		}
+		// ? These changes are to make sure everything is nice and black with white text
+		.navlinks--container.revealed {
+			background-color: var(--wp--preset--color--black) !important;
+
+			.sub-menu {
+				background-color: var(--wp--preset--color--black) !important;
+				color: var(--wp--preset--color--white) !important;
+
+				.menu-item {
+					.link-text {
+						font-size: var(
+							--wp--preset--font-size--20-28
+						) !important;
+					}
+				}
+			}
+		}
+
+		.logo {
+			&,
+			svg path {
+				fill: var(--wp--preset--color--white);
+			}
+		}
+		.navlinks,
+		& {
+			background-color: var(--wp--preset--color--black);
+			color: var(--wp--preset--color--white);
+		}
+		.navlinks > ul > li > a {
+			color: var(--wp--preset--color--white);
+			//	@include media("<=medium") {
+			@media screen and (max-width: 1100px) {
+				&:hover {
+					color: var(--wp--preset--color--black);
+				}
+			}
+		}
+
+		.sub-menu {
+			color: var(--wp--preset--color--black);
+		}
+	}
+}
+
+//

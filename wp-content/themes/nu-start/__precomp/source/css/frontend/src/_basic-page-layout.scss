@@ -1,0 +1,74 @@
+html {
+	height: 100%;
+	scroll-behavior: smooth;
+	font-size: 16px;
+}
+body {
+	min-height: 100%;
+	display: flex;
+	flex-flow: column nowrap;
+	> header,
+	> footer {
+		flex: none 0;
+	}
+	> main {
+		flex: 1 0 auto;
+	}
+}
+//
+//
+//
+//
+
+.blocks--wrapper {
+	// blocks--wrapper is considered the base top-level container;
+	// we will pass this down to certain children like the content area of templates with a sidebar, or other containers that provide behavior.
+	@include add-top-level-vertical-spacing();
+	@include add-top-level-outer-spacing();
+
+	// ! it is possibly bad code - do we want "grouped blocks" to inherit the normal margin-top; or be more tightly grouped?
+	// ! does this create a need to "double group" things to get layout?
+	> .wp-block-group {
+		// ? we need to qualify this more, because it doesn't make sense in the CMS
+		&.alignfull {
+			@include add-top-level-vertical-spacing();
+		}
+	}
+
+	// ? the group block doesn't get any max-width from gutenberg so we add it ourselves,
+	// ? if you enable default layout then you do not require this code; but it is a lot of effort to always toggle it on
+	> .wp-block-group:where(:not(.alignwide, .alignfull)) {
+		max-width: var(--wp--custom--content-size);
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+
+	// ? last block pushes the footer down unless it is a full-bleed background
+	> :last-child:not(.has-background.alignfull) {
+		margin-bottom: var(--wp--custom--spacing--large);
+	}
+	// ? last block that is a full-bleed background must have consistent padding-bottom
+	> :last-child(.has-background.alignfull) {
+		padding-bottom: var(--wp--custom--spacing--large);
+	}
+
+	// ? fullwidth sections with a background should have equal padding instead of margin
+	> .alignfull.has-background {
+		padding-bottom: var(--wp--custom--spacing--large);
+		padding-top: var(--wp--custom--spacing--large);
+		padding-right: var(--wp--custom--spacing--outer);
+		padding-left: var(--wp--custom--spacing--outer);
+		+ .alignfull.has-background {
+			margin-top: 0;
+			padding-top: 0;
+		}
+	}
+
+	// ! this messes up sometimes you want this, like in our "hero" group patterns
+	// ! i think thats fine, and we should have those overrides in that pattern anyway!
+	> .alignfull:not(.has-background):not(:first-child) {
+		padding-right: var(--wp--custom--spacing--outer);
+		padding-left: var(--wp--custom--spacing--outer);
+	}
+
+}

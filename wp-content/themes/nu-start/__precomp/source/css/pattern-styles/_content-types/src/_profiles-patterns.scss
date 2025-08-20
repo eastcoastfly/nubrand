@@ -1,0 +1,30 @@
+
+.pattern--is-basic-profile-detail {
+
+
+	.wp-block-column > .wp-block-group + .wp-block-image {
+		margin: $margin_2x 0;
+	}
+
+	.the-academic-titles-container-card {
+		padding: $margin_2x;
+		margin: $margin_2x 0;
+	}
+	.is-the-title-and-category-container {
+		margin-top: $base-margin;
+		* {
+			margin: $half-margin 0 0 0;
+		}
+	}
+
+	// ! will be replaced this is hacky
+	> p:first-child {
+
+		+ hr {
+			margin-bottom: $margin_2x;
+			opacity: 0.2;
+		}
+	}
+	
+	
+}

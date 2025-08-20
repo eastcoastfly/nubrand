@@ -1,0 +1,533 @@
+//
+// ==============================================================
+// * Code in this sections is all related to WP search results
+// ==============================================================
+//
+:is(body.search-results, body.search-no-results) {
+	.blocks--wrapper {
+		@media screen and (min-width: 1401px) {
+			max-width: 1200px;
+			margin-left: auto;
+			margin-right: auto;
+			padding: 0 !important;
+		}
+		@media screen and (max-width: 1400px) {
+			max-width: 90%;
+			margin-left: auto;
+			margin-right: auto;
+			padding: 0 !important;
+		}
+
+		.search-results-info {
+			margin-top: 80px !important;
+			text-align: center;
+
+			.nu__sitesearch {
+				.nu__sitesearch-form--container {
+					width: 100%;
+
+					> form {
+						width: 100%;
+						height: 56px;
+
+						#sitesearch-input {
+							font-size: 18px;
+							text-align: left;
+							padding-left: 18px;
+						}
+					}
+				}
+
+				// * Hide search icon in middle of search bar (on WP results page)
+				.nu__sitesearch_toggle {
+					&:before {
+						display: none;
+					}
+				}
+			}
+
+			// * The search form and input
+			.search-form {
+				@include media("<phone") {
+					max-width: 100%;
+				}
+			}
+
+			// * The blurb of "Your search for blahblah returned 7 results"
+			.returned-results {
+				color: var(--wp--preset--color--black);
+				font-size: var(--wp--preset--font-size--30-36);
+				font-weight: 700;
+				@include media(">=phone") {
+					margin-top: ($margin_4x + $base-margin);
+				}
+				@include media("<phone") {
+					margin-top: $margin_3x;
+					margin-left: auto;
+					margin-right: auto;
+					max-width: 80%;
+					text-align: center;
+					font-size: var(--wp--preset--font-size--20-28);
+				}
+			}
+
+			// * "Displaying results 1 to 10"
+			.results-range {
+				color: var(--wp--preset--color--neutral-5);
+				font-size: var(--wp--preset--font-size--16-24);
+			}
+
+			// * Error message for a blank search field
+			.search-error {
+				color: var(--wp--preset--color--nu-red);
+			}
+
+			// * Styling for the search results posts grid itself
+			+ .acf-block.posts-grid {
+				margin-top: 48px !important;
+
+				.contains-clickable-area {
+					&:hover {
+						.grid-item-content {
+							.post-title {
+								span {
+									text-decoration: 1px solid underline;
+								}
+							}
+						}
+					}
+				}
+				.grid-item-content {
+					background-color: var(--wp--preset--color--neutral-1);
+					.is-hanging-icon {
+						background-color: var(--wp--preset--color--white);
+						bottom: 0;
+						top: unset;
+						right: 0;
+						position: absolute;
+						padding: 8px 16px;
+					}
+					.post-breadcrumb {
+						font-size: var(--wp--preset--font-size--14-20);
+						margin-top: 0;
+					}
+					.post-title {
+						font-size: var(--wp--preset--font-size--20-28);
+						font-weight: 700;
+					}
+					.post-excerpt {
+						font-size: var(--wp--preset--font-size--16-24);
+						max-width: 90%;
+					}
+				}
+
+				// * Styling for pagination below the results
+				.pagination {
+					> .page-numbers {
+						li {
+							.page-numbers {
+								border: none !important;
+								border-radius: 0 !important;
+								font-size: var(
+									--wp--preset--font-size--16-24
+								) !important;
+								color: var(--wp--preset--color--neutral-6);
+
+								// * The current page number
+								&.current {
+									background-color: transparent;
+									color: var(
+										--wp--preset--color--black
+									) !important;
+									border-bottom: solid 1px #000 !important;
+									padding-bottom: $margin_3x;
+									margin-top: 1px;
+								}
+
+								// * Move prev/next arrows (per Figma)
+								&.prev {
+									padding-right: $margin_4x;
+									&:hover {
+										color: var(
+											--wp--preset--color--black
+										) !important;
+									}
+								}
+								&.next {
+									padding-left: $margin_4x;
+									&:hover {
+										color: var(
+											--wp--preset--color--black
+										) !important;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//
+//
+// * Styling for the searchbar itself (on search results)
+.nu__searchbar-container {
+	> #nu__searchbar-form {
+		> div {
+			border: solid 1px var(--wp--preset--color--black);
+			border-radius: 50px;
+			padding: 8px 16px;
+			@include media("<large") {
+				margin-right: 0 !important;
+			}
+
+			// * Hide the text "Search Northeastern University site"
+			.label.focus {
+				display: none !important;
+			}
+
+			:is(button[type="submit"], #query, .reset) {
+				margin-top: 0 !important;
+			}
+
+			#query {
+				height: 46px;
+				font-size: 24px;
+			}
+		}
+	}
+}
+
+//
+// *
+// *	GCSE-type search results
+// *	(Note: This specifically uses templates/template-search.php, on a created Search page)
+//
+//
+body.page-template-template-search {
+	// ? unset some of the styles that come from globalutils
+	height: unset;
+
+	// ? unset some of the styles that come from globalutils
+	div.main {
+		min-height: unset;
+		height: unset;
+		overflow: unset;
+		margin-top: 80px !important;
+
+		// * Limit max-width on smaller screens
+		> section {
+			@media screen and (min-width: 1401px) {
+				max-width: 1200px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			@media screen and (max-width: 1400px) {
+				max-width: 90%;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+	}
+
+	// ? reset the max-width (content size) and use this variable to keep the site consistent if tweaked globally
+	--wp--style--global--content-size: 1200px;
+
+	// ? apply the "max width"
+	.nu__searchbar-container,
+	div#___gcse_0 {
+		max-width: var(--wp--style--global--content-size);
+		margin: auto;
+	}
+
+	//
+	// ? this selector was copied from the stylesheet we are overriding
+	//
+	div.main > section > div#___gcse_0 {
+		// ? set everything and this container to lato
+		*,
+		& {
+			font-family: "Lato";
+		}
+
+		// ? Hide thumbnail images from result items
+		// ? Hide "Search for on Google" at the bottom of pagination
+		.gcsc-find-more-on-google,
+		.gs-image {
+			display: none;
+		}
+
+		// ? lower the font weight of the boldened search result matches in title/content
+		div.gs-title b,
+		div.gsc-webResult b {
+			font-weight: 700 !important;
+		}
+
+		// ? target the title regardless of its nesting
+		.gs-title {
+			margin-left: 0 !important;
+			font-size: var(--wp--preset--font-size--20-28);
+			line-height: var(--wp--custom--line-height--rfs-28);
+			font-weight: 400;
+			a:hover {
+				// ? replace the border bottom hover with an underline
+				border-bottom: unset !important;
+				text-decoration: underline !important;
+				text-decoration-thickness: 1px !important;
+				text-decoration-color: var(
+					--wp--preset--color--black
+				) !important;
+				text-underline-offset: 2px;
+			}
+		}
+
+		// * a nice swath of markup that makes touch ups easier
+		// ? closely following the direct markup of the form here for specificty beating as well as reference
+		div.gsc-results {
+			//
+			//
+			> div.gsc-expansionArea {
+				//
+				// ? result item outermost wrapper
+				> div.gsc-result {
+					border-bottom: 1px solid var(--wp--preset--color--neutral-5);
+					padding: $margin_2x 0;
+
+					// ? an inner wrapper
+					> div.gs-result {
+						//
+						// ? clean reset
+						> * {
+							margin: unset;
+							padding: unset;
+						}
+
+						// ? title lies in here, but also thumbnail, test if there is no thumbnail
+						> .gsc-thumbnail-inside {
+						}
+
+						// ? the breadcrumbs
+						> .gsc-url-top {
+							font-size: 14px;
+							line-height: 20px;
+						}
+
+						// ? the main content (excerpt) is in here
+						> .gsc-table-result {
+							margin-top: ($base-margin + $half-margin);
+						}
+					}
+				}
+			}
+		}
+
+		//
+		// * Section that includes the number of search results summary, Sort button
+		//
+		.gsc-above-wrapper-area {
+			display: block;
+
+			table.gsc-above-wrapper-area-container {
+				// * Mobile styling for number of results and sort-by
+				> tbody > tr {
+					display: flex;
+					@include media("<phone") {
+						flex-flow: column nowrap;
+					}
+					@include media(">=phone") {
+						justify-content: space-between;
+					}
+
+					.gsc-orderby {
+						text-align: left;
+					}
+				}
+			}
+
+			// * "Sort by: Relevance"
+			.gsc-orderby-container {
+				// * "Sort by"
+				.gsc-orderby-label.gsc-inline-block {
+					color: var(--wp--preset--color--neutral-5) !important;
+					margin-right: 8px;
+				}
+
+				// * The actual <select>
+				.gsc-option-menu-container.gsc-inline-block {
+					background-color: var(--wp--preset--color--black);
+					border-radius: 20px;
+					padding: 8px 24px;
+					.gsc-selected-option-container.gsc-inline-block {
+						color: var(--wp--preset--color--white);
+						background-color: var(--wp--preset--color--black);
+						padding: 0 36px 0 18px;
+						.gsc-selected-option {
+							color: var(--wp--preset--color--white);
+							background-color: var(--wp--preset--color--black);
+						}
+						.gsc-option-selector {
+							color: var(--wp--preset--color--white) !important;
+							background-color: var(
+								--wp--preset--color--black
+							) !important;
+							right: 0;
+							&:before {
+								color: var(
+									--wp--preset--color--white
+								) !important;
+								background-color: var(
+									--wp--preset--color--black
+								) !important;
+							}
+						}
+					}
+				}
+			}
+
+			.gsc-result-info-container {
+				.gsc-result-info {
+					font-size: var(--wp--preset--font-size--16-24) !important;
+					color: var(--wp--preset--color--neutral-5) !important;
+				}
+			}
+		}
+
+		// * Remove table width for thumbnail image cell
+		.gsc-table-result {
+			.gsc-table-cell-thumbnail.gsc-thumbnail {
+				.gs-image-box {
+					width: 0 !important;
+					padding: 0 !important;
+				}
+			}
+		}
+
+		.gs-snippet {
+			font-weight: 400 !important;
+		}
+
+		// * Remove left margin to align GSCE results
+		.gsc-webResult.gsc-result,
+		.gsc-results.gsc-webResult,
+		.gsc-above-wrapper-area {
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}
+
+		//
+		// ? GCSE Pagination uses the following markup,
+		// ? we are adjusting this to match our .pagination
+		//
+		.gsc-cursor-box {
+			.gsc-cursor {
+				.gsc-cursor-page {
+					color: var(--wp--preset--color--neutral-4);
+
+					&:hover {
+						border-bottom: solid 1px var(--wp--preset--color--black) !important;
+					}
+					&.gsc-cursor-current-page {
+						border-bottom: solid 1px var(--wp--preset--color--black) !important;
+					}
+				}
+			}
+		}
+	}
+
+	// ? apply our styles over the cleaner, unset defaults
+	> div.main {
+		margin-top: var(--nu--mainel--offset);
+		flex: 1 0 auto;
+		> section:first-child {
+			margin-top: var(--wp--custom--spacing--large);
+			@include add-top-level-outer-spacing();
+		}
+	}
+
+	// *
+	// * 		this is reskinned pagination that we might want to hoist / update our old style (or add a second is-style version)
+	// *
+	.pagination {
+		ul.page-numbers {
+			gap: $half_margin;
+			li {
+				> .page-numbers {
+					border: none;
+					border-radius: 0;
+					font-size: var(--wp--preset--font-size--16-24);
+					color: var(--wp--preset--color--neutral-6);
+					// * The current page
+					&.current {
+						background-color: transparent;
+						color: var(--wp--preset--color--black);
+						border-bottom: solid 1px #000;
+						padding-bottom: $margin_3x;
+						margin-top: 1px;
+					}
+					// * Move prev/next arrows (per Figma)
+					&.prev {
+						padding-right: $margin_4x;
+						&:hover {
+							border: none;
+						}
+					}
+					&.next {
+						padding-left: $margin_4x;
+						&:hover {
+							border: none;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// * Error message for a blank search field
+	.search-error {
+		color: var(--wp--preset--color--nu-red);
+	}
+
+	// * 		(end of reskinned pagination)
+}
+
+//
+//
+// * Styling for the "Search" heading section
+#main {
+	> .main-heading-search {
+		border-bottom: solid 1px var(--wp--preset--color--neutral-3);
+		h1 {
+			font-family: "Lato";
+			font-size: 48px;
+			font-weight: 700;
+			margin: 48px 0 16px 28px;
+		}
+
+		// * Pathway to unhide the x on WP search form
+		+ .blocks--wrapper {
+			> .search-results-info {
+				#sitesearch-input {
+					width: calc(100% - 130px) !important;
+				}
+				.nu__sitesearch-close {
+					display: block !important;
+					cursor: pointer;
+					color: var(--wp--preset--color--white);
+					background-color: var(--wp--preset--color--black);
+					border-radius: 50%;
+					width: 18px;
+					line-height: 18px;
+					font-size: 12px;
+
+					&:hover {
+						background-color: var(--wp--preset--color--neutral-3);
+					}
+				}
+			}
+		}
+	}
+}

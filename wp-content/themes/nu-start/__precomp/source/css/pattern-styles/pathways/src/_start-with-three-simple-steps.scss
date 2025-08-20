@@ -1,0 +1,19 @@
+// 
+// 
+// 
+.patterns--pathways--start-with-three-simple-steps {
+
+
+	> .wp-block-group:last-child {
+		margin-top: $margin_4x;
+		> .wp-block-group {
+			&:not(:first-child){
+				margin-top: $margin_2x;
+			}
+		}
+
+	}
+
+	
+	
+}

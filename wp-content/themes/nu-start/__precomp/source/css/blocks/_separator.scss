@@ -1,0 +1,13 @@
+.blocks--wrapper {
+	hr,
+	.wp-block-separator {
+		background-color: var(--wp--preset--color--neutral-2);
+		border-color: var(--wp--preset--color--neutral-2);
+		margin: $margin_2x auto;
+
+		opacity: 1;
+		&.is-style-wide {
+			height: 1px !important;
+		}
+	}
+}

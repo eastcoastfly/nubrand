@@ -1,0 +1,42 @@
+//
+//
+//
+// * To make FontAwesome pseudo-elements render properly
+.icon::before {
+	display: inline-block;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+}
+
+//
+//
+//
+// * Any svg icon inside a link gets this treatment
+:is(a, .is-the-view-more-link) {
+	// * Any icons within a link, add 16px of margin-left to the icon (except external link icon)
+	> .svg-inline--fa {
+		&:not(.fa-arrow-up-right-from-square) {
+			margin-left: $base-margin;
+		}
+		// * If it's the external link icon
+		&.fa-arrow-up-right-from-square {
+			margin-left: $half-margin;
+			color: var(--wp--preset--color--black);
+			vertical-align: top;
+			font-size: small;
+		}
+	}
+}
+
+//
+//
+//
+// * CONTACT US: Hotfix for space between inline svg and text (may want to move this to FRAMEWORK)
+p {
+	> .svg-inline--fa {
+		// * Any immediate sibling of <a> has 16px of space after the svg
+		& + a {
+			margin-left: $base-margin;
+		}
+	}
+}

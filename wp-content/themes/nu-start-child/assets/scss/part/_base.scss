@@ -1,0 +1,103 @@
+main#main {
+  overflow: hidden;
+}
+
+h1 {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 70px;
+  line-height: 75px;
+  @media only screen and (max-width:1300px) {
+    font-size:50px;
+    line-height:55px;
+  }
+  @media only screen and (max-width:980px) {
+    font-size: 45px;
+    line-height: 50px;
+  }
+}
+
+h2 {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 45px;
+  line-height: 55px;
+  @media only screen and (max-width:980px) {
+    font-size: 35px;
+    line-height: 45px;
+  }
+}
+
+h3 {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 1.25;
+  @media only screen and (max-width:1400px) {
+    font-size: 2.5vw;
+  }
+  @media only screen and (max-width:980px) {
+    font-size: 30px;
+  }
+}
+
+h4 {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 1.33;
+  
+  @media only screen and (max-width:980px) {
+    font-size: 20px;
+  }
+}
+
+h5 {
+  font-size: 23px;
+  line-height: 1.2em;
+  
+  @media only screen and (max-width:980px) {font-size: 19px;}
+}
+
+h6 {
+  font-size: 22px;
+  line-height:1.2em;
+  
+  @media only screen and (max-width:980px) {font-size: 18px;}
+}
+
+
+p {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+:is(p, li) a {
+  font-weight: bold;
+}
+
+.blocks--wrapper {
+  ul, ol {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
+
+ul:not([class]) li:not(:first-child,[class]) {
+  padding-top: 0;
+}
+
+@media (max-width: 599px) {
+  .wp-block-column {      margin-top: 0!important;  }
+}
+
+@import './buttons';
+@import './containers';
+

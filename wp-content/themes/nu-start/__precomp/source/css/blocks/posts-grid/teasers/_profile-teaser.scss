@@ -1,0 +1,46 @@
+/* 
+
+*/
+
+.nu__grid {
+	.grid-item.nu_profiles {
+		position: relative;
+
+		.grid-item-content {
+			position: relative;
+			.post-title {
+				font-size: var(--wp--preset--font-size--30-36);
+				@include rfs(36px, line-height);
+				font-weight: 300;
+				margin-top: 0;
+			}
+			.post-excerpt {
+				margin-top: $margin_2x;
+				margin-bottom: 0;
+				font-weight: 700;
+				font-size: var(--wp--preset--font-size--20-28);
+			}
+			.is-hanging-icon {
+				background-color: var(--wp--preset--color--neutral-1);
+				position: absolute;
+				top: 0;
+				right: 0;
+				transform: translateY(-100%);
+				padding: 4px 8px;
+				//
+				// * Now connect to Font Awesome
+				.fa-arrow-up-right {
+					font-size: var(--wp--preset--font-size--30-36);
+					line-height: 30px;
+					vertical-align: -0.5rem;
+				}
+			}
+		}
+
+		&.has-layout-horizontal {
+			.is-hanging-icon {
+				transform: translateY(0);
+			}
+		}
+	}
+}

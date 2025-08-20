@@ -1,0 +1,167 @@
+//
+//  * 		"Content With Sidebar" pattern
+//  			-- note that the sidebar could be on either side (.is-the-sidebar, .is-the-content)
+//
+
+//
+//
+:where(.is-the-sidebar-menu) {
+	.is-the-sidebar-navicon {
+	}
+}
+
+//
+//
+:where(.patterns--layouts--content-with-sidebar) {
+	//
+	.is-the-content {
+	}
+	//
+	.is-the-sidebar {
+	}
+}
+
+:is(.patterns--layouts--content-with-sidebar) {
+	//
+	.is-the-content {
+	}
+	//
+	.is-the-sidebar {
+	}
+}
+
+// ? special cases below
+
+// * Cleaner code start!
+.patterns--layouts--content-with-sidebar {
+	@include add-top-level-outer-spacing();
+	> .wp-block-columns {
+		gap: max($margin_4x, 10%);
+		// * Stack sidebar menu on top for < 1024px (medium)
+		@include media("<large") {
+			flex-direction: column;
+		}
+
+		.wp-block-column {
+			//
+			// * The sidebar column
+			&.is-the-sidebar {
+				@include media("<large") {
+					// * Remove the CMS-set width of 280px
+					flex-basis: auto !important;
+				}
+				//
+				// * Outer group of the sidebar menu
+				.is-the-sidebar-menu {
+					position: -webkit-sticky;
+					position: sticky !important;
+					top: 220px;
+					margin: 0;
+					z-index: 1;
+					position: relative;
+
+					// * "Section Menu" and dropdown arrow (p)
+					.is-the-sidebar-navicon {
+						// * Add nice padding for the item
+						padding: $half-margin 0;
+						i.icon {
+							display: none !important;
+						}
+
+						@include media("<large") {
+							// * Place border around item and flex text and chevron to the sides
+							border: 1px solid
+								var(--wp--preset--color--neutral-1);
+							display: flex;
+							justify-content: space-between;
+							@include nu_fa_icon("\f107", after);
+							position: relative;
+							&:after {
+								position: absolute;
+								right: $half-margin;
+								top: $base-margin;
+								font-size: 16px;
+							}
+						}
+						// * Do not display on screens wider than medium
+						@include media(">=large") {
+							display: none;
+						}
+						// * The text content (e.g. 'Section Menu') of the navicon
+						.mobile-nav-text {
+							padding-left: $base-margin;
+						}
+						// * Chevron too close to right edge
+						.wp-block-navigation-submenu__toggle {
+							right: $half-margin !important;
+						}
+						// * If the section menu is opened on smaller than 1024px (additional class of .mobile-revealed)
+						&.mobile-revealed {
+							+ nav.wp-block-navigation {
+								@include media("<large") {
+									// * Then display the menu items
+									display: block;
+								}
+							}
+
+							// * Switch navicon to "close" X upon opening
+							&:after {
+								content: "\f00d";
+							}
+						}
+						//
+						// * Hide the section menu items if navicon not opened
+						+ nav.wp-block-navigation {
+							@include media("<large") {
+								display: none;
+							}
+						}
+					}
+
+					// * Sidebar menu (nav)
+					.wp-block-navigation {
+						//
+						@include media("<=large") {
+							//
+							// * Set max-height and scrolling on dropdown menu
+							margin-top: 0;
+							width: 100%;
+							max-height: 40vh;
+							overflow-x: hidden;
+							overflow-y: auto;
+							//
+							// * Set boxshadow and border for better visibility
+							@include nu__boxshadow(4);
+							border-right: 1px solid
+								var(--wp--preset--color--neutral-1);
+							border-bottom: 1px solid
+								var(--wp--preset--color--neutral-1);
+						}
+					}
+				}
+			}
+
+			//
+			//
+
+			// * The content column
+			&.is-the-content {
+				@include add-top-level-vertical-spacing();
+
+				// ? unrelated to outer spacing, we want this column to never be too wide (not in cms)
+				max-width: calc(var(--wp--custom--content-size) * 0.75);
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+	}
+
+	// ? Not sure if this code below is necessary, but just in case
+	// ? handle adjustments to the outer columns - wider gap between columns and inner blocks
+	// @include media(">medium") {
+	// 	> .wp-block-columns:not(.is-not-stacked-on-mobile)
+	// 		> .wp-block-column:not(:first-child) {
+	// 		margin-left: var(--wp--custom--spacing--outer);
+	// 	}
+	// }
+}

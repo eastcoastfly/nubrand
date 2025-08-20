@@ -1,0 +1,110 @@
+//
+//
+//
+@import "./src/three-key-statements-with-intro-and-call-to-action";
+@import "./src/media-and-text-with-three-images";
+@import "./src/three-statements-with-featured-image";
+@import "./src/2x2-statements-with-c2a";
+@import "./src/grid-of-statements";
+@import "./src/media-and-text-oscillating";
+@import "./src/overview-and-2-cards-with-cta";
+@import "./src/three-features-as-pathways";
+
+//
+// * Styling for the numbered boxes
+.patterns--features--numbered-boxes {
+	> .wp-block-columns {
+		// * Each individual box of info
+		> .wp-block-column {
+			// * Add borders and padding (per Figma)
+			border: solid 1px var(--wp--preset--color--neutral-1);
+			border-top: solid 1px var(--wp--preset--color--nu-red);
+			position: relative;
+			padding: $margin_3x $margin_2x;
+
+			@include media("<phone") {
+				// * Add some margin between boxes upon stacking
+				&:not(:first-child) {
+					margin-top: $margin_2x;
+				}
+			}
+
+			// * The actual number ("1", "2", "3", "4")
+			> p:first-child {
+				// * Add the red circle border and position it
+				border: solid 2px var(--wp--preset--color--nu-red);
+				border-radius: 50%;
+				margin: 0 auto;
+				position: absolute;
+				top: 0;
+				transform: translate(-50%, -50%);
+				left: 50%;
+				// * Add background color to make it not transparent
+				background-color: var(--wp--preset--color--white);
+				// * Fix for dimensions to meet Figma
+				width: $margin_4x;
+				height: $margin_4x;
+				font-size: 32px;
+				font-weight: 300;
+				line-height: 58px;
+				// * Hide overflow and touchups
+				overflow: hidden;
+			}
+		}
+	}
+}
+
+.patterns--blurbs--title-and-blurb-with-fa-icon {
+	@include media("<medium") {
+		.svg-inline--fa {
+			+ * {
+				margin-left: $base-margin;
+			}
+		}
+	}
+	@include media(">=medium") {
+		padding-left: $margin_3x;
+		position: relative;
+		.svg-inline--fa {
+			position: absolute;
+			top: 0;
+			left: 0;
+			margin: 0 !important;
+		}
+	}
+	// * From Oakland child theme
+	> p {
+		> svg {
+			color: var(--wp--preset--color--neutral-4);
+		}
+	}
+}
+
+.patterns--icons--rows-of-features-with-icons {
+	.svg-inline--fa {
+		+ * {
+			margin-left: $base-margin;
+		}
+	}
+}
+.patterns--icons--columns-of-features-with-icons {
+	@include media("<medium") {
+		.svg-inline--fa {
+			+ * {
+				margin-left: $base-margin;
+			}
+		}
+	}
+	@include media(">=medium") {
+		.wp-block-column {
+			padding-left: $margin_3x;
+			position: relative;
+			.svg-inline--fa {
+				position: absolute;
+				top: 0;
+				left: 0;
+				margin: 0 !important;
+			}
+		}
+	}
+}

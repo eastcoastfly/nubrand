@@ -1,0 +1,35 @@
+body.is-debug-mode {
+	.blocks--wrapper {
+		%outline_any_patterns {
+			//
+			outline: 2px auto #c8102e;
+			outline-offset: #{$base-margin};
+		}
+
+		.patterns--features--media-and-text-oscillating,
+		.patterns--columns--intro-section-after-lp-hero,
+		.patterns--oakland--buildings-and-facilities,
+		.temp--working-on-this-collage {
+			@extend %outline_any_patterns;
+		}
+	}
+}
+
+// 
+// ? is this the pallete thing?
+// 
+.patterns--developers--full-palette-as-covers,
+.patterns--developers--show-the-whole-palette {
+	.wp-block-cover {
+		min-height: 240px !important;
+	}
+	.wp-block-columns {
+		gap: 0px !important;
+		flex-wrap: wrap !important;
+		margin-top: 0 !important;
+		gap: 0 !important;
+	}
+	.wp-block-column {
+		flex-basis: 240px !important;
+	}
+}

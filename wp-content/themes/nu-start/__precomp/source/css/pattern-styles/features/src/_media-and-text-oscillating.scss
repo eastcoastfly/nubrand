@@ -1,0 +1,26 @@
+/* 
+	rows of media+text blocks that alternate image on the left/right
+*/
+//
+
+:where(.patterns--features--media-and-text-oscillating) {
+	//
+
+
+	// ? increased vertical spacing
+	> .wp-block-media-text {
+		&:not(:first-child) {
+			margin-top: var(--wp--custom--spacing--large);
+		}
+	}
+
+	// ? over mobile breakpoint the image always fills height
+	@include media(">small") {
+		.wp-block-media-text__media {
+			&,
+			img {
+				height: 100%;
+			}
+		}
+	}
+}

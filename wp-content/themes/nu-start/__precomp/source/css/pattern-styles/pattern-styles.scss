@@ -1,0 +1,31 @@
+/* 
+	NU Start Pattern Styles
+*/
+
+// ? this file will separately compile to build/patterns/patterns.css and requires the library
+@import "../library";
+
+
+// ? all patterns imported below *must* follow this class structure
+// ? 2 dashes for traversal, 1 dash for spaces, like the wp css var syntax (--wp--style--block-gap)
+// patterns--category-name--pattern-name--maybe-type
+// patterns--example-cat--example-pat--type-a
+
+// * folders are our pattern categories, files are our patterns
+// ? each folder has an _index.scss and a /src/ folder to make the imports very clean
+@import './blurbs';
+@import './features/';
+@import './heroes/';
+@import './icons/';
+@import './layouts/';
+@import './pathways/';
+@import './showcases/';
+@import './sliders/';
+@import './stats/';
+@import './teasers/';
+@import './testimonials/';
+@import './utility';
+@import './_content-types';
+
+// 
+@import './_misc';

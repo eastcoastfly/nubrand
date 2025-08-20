@@ -1,0 +1,75 @@
+//
+//
+//
+.pattern--heroes-landing-page {
+	> .wp-block-cover {
+		padding-right: var(--wp--custom--spacing--outer);
+		padding-left: var(--wp--custom--spacing--outer);
+	}
+
+	//
+	> .wp-block-group {
+		padding-right: var(--wp--custom--spacing--outer);
+		padding-left: var(--wp--custom--spacing--outer);
+		margin-top: 0 !important;
+	}
+
+	//
+	.nu__breadcrumbs {
+		padding: $base-margin 0;
+	}
+	.wp-block-cover__inner-container {
+		> .has-background {
+			padding: $margin_4x !important;
+			margin: $margin_4x 0;
+		}
+	}
+	@include media(">=medium") {
+		.wp-block-cover__inner-container {
+			> .has-background {
+				max-width: 50%;
+				// margin-left: $margin_4x;
+			}
+		}
+	}
+	+ .alignfull.has-background {
+		margin-top: 0;
+		//
+		a.wp-block-button__link {
+			&:hover {
+				background-color: var(--wp--preset--color--white) !important;
+				color: var(--wp--preset--color--black) !important;
+			}
+		}
+	}
+	@include media("<phone") {
+		> .wp-block-cover {
+			> .wp-block-cover__inner-container {
+				.wp-block-group.has-background {
+					// * Decrease the padding around hero text on mobile
+					padding: $margin_2x !important;
+				}
+			}
+		}
+	}
+	@include media(">=medium") {
+		.wp-block-cover {
+			overflow: hidden;
+		}
+		.wp-block-cover__image-background {
+			animation: image-in 4s both;
+			animation-delay: 250ms;
+		}
+		.patterns--blurbs--basic-section-headline,
+		.is-the-floating-card {
+			* {
+				animation: fade-in-up 2s both $bezier;
+				animation-delay: 200ms;
+			}
+			~ * {
+				animation: fade-in-up 3s both $bezier;
+				animation-delay: 400ms;
+			}
+		}
+	}
+}
